@@ -47,3 +47,7 @@ footer {
     font-weight: 700;
     color: #2a201f;
   }
+
+  h1 {
+    color: red;
+  }
