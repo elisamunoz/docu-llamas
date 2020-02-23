@@ -1,3 +1,23 @@
+/** General paddings, margins, styles **/
+
+body,
+html {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  text-align: justify;
+}
+
+.background-image {
+  min-height: calc(100% - 40px);
+  width: 100%;
+  display: block;
+  background-size: cover;
+  padding-top: 20px;
+  background-position: center;
+  position: relative;
+  background-attachment: fixed;
+}
+
 /* Header */
 .nav {
     position: fixed;
@@ -21,6 +41,35 @@
   .nav-link:hover {
     font-weight: 700;
     color: #2a201f;
+  }
+
+  /* Home */
+  .parallax {
+    width: 100%;
+    height: calc(100vh - 40px);
+    background-image: url("../images/01.home_img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .jumbotron {
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    margin-top: 7%;
+  }
+  
+  .home-title-container {
+    max-width: 700px;
+    background-color: rgb(250, 250, 250, 0.8);
+    border-radius: 10px;
+  }
+  
+  .display-4 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-size: 6em;
   }
 
   /* Footer */

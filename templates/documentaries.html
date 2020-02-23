@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
     {% for documentary in docus %}
         {{documentary.category_name}}
         {{documentary.docu_title}}
         {{documentary.docu_description}}
-        {{documentary.url}}
+        {{documentary.docu_url}}
         {{documentary.lenght}}
         {{documentary.produced_by}}
     {% endfor %}
