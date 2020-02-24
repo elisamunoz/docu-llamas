@@ -7,7 +7,7 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
-app.config["MONGO_DBNAME"] = "docu-llama"
+app.config["MONGO_DBNAME"] = "docu_meow"
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
