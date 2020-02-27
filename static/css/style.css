@@ -197,7 +197,7 @@ footer {
 
 @media only screen and (min-width: 600px){
 .card{
-  height: 200px;
+  height: 340px;
   max-width: none;
 }
 .card__img{
@@ -206,20 +206,23 @@ footer {
   bottom: 0;
   left: 0;
   height: auto;
-  width: 320px;
+  width: 430px;
 }
 .card__body{
   position: absolute;
   top: 0;
   bottom:0;
   right: 0;
-  left: 340px;
+  left: 450px;
   
 }
+.card__body__txt{
+  max-height: 175px;
+  }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1025px) {
   .documentaries-container{
-    max-width: 60%;
+    max-width: 50%;
   }
 }

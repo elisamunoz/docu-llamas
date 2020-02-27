@@ -14,7 +14,7 @@ mongo = PyMongo(app)
 
 @app.route('/') 
 def home():
-    return render_template("home.html")
+    return render_template("home.html", docus=mongo.db.docus.find())
 
 @app.route('/get_documentaries') # gets documentaries from MongoDB
 def get_documentaries():

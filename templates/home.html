@@ -1,6 +1,4 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <!-- Home -->
 <div class="parallax">
@@ -20,6 +18,7 @@
 <section class="documentaries">
     <div class="documentaries-container">
         <h1 class="title">Documeowtaries</h1>
+        <!-- images grid -->
         <div class="docu-grid-area">
             <div class="docu-grid docu-grid--1"></div>
             <div class="docu-grid docu-grid--2"></div>
@@ -27,20 +26,24 @@
         </div>
         
         <!-- card -->
+        {% for documentary in docus %}
         <div class="wrapper">
           <article class="card">
-            <div class="card__img"></div>
+            <div class="card__img" style="background-image: url({{documentary.docu_img}})"></div>
             <div class="card__body">
-              <h4 class="card__body__title">Lawqa (Lauca) Que el Parque Vuelva a Ser Parque</h4>
+                <div class="card__body__header">
+                    <h6>{{documentary.category_name}}</h6>
+                    <h6>{{documentary.docu_produced_by}} - {{documentary.docu_lenght}}</h6>
+                </div>
+              <h4 class="card__body__title">{{documentary.docu_title}}</h4>
               <div class="card__body__txt">
-              <p>La Reserva Mundial de la Biosfera “Lauca”, es una zona de biodiversidad única en el planeta. Ubicada en el altiplano de Chile, junto a la frontera con Bolivia, está siendo contaminada por relaves mineros abandonados y destruida por la desenfrenada explotación de la industria minera del bórax que atenta contra sus recursos naturales.</p> 
-                
-                 
+              <p>{{documentary.docu_summary}}</p>
               </div>
-            </div>
-            <a href="#" class="card__link">Read more</a>
+            </div>  
+            <a href="{{documentary.docu_url}}" target="_blank" class="card__link">Go to website</a>
           </article>
         </div>
+        {% endfor %}
     </div>
 </section>
     
