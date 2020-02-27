@@ -22,7 +22,13 @@ def get_documentaries():
 
 @app.route('/add_documentary')
 def add_documentary():
-    return render_template('adddocumentary.html')
+    return render_template('adddocumentary.html', categories=mongo.db.categories.find())
+
+@app.route('/insert_documentary')
+def insert_documentary():
+    docus = mongo.db.docus
+    docus.insert_one(request.form.to_dict())
+    return redirect(url_for('get_documentaries'))
 
 # @app.route('/edit_documentary')
 # def edit_documentary():
