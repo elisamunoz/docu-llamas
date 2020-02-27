@@ -13,18 +13,16 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
 
 @app.route('/') 
-def home():
-    return render_template("home.html", docus=mongo.db.docus.find())
 
 @app.route('/get_documentaries') # gets documentaries from MongoDB
 def get_documentaries():
-    return render_template("documentaries.html", docus=mongo.db.docus.find())
+    return render_template("home.html", docus=mongo.db.docus.find())
 
 @app.route('/add_documentary')
 def add_documentary():
     return render_template('adddocumentary.html', categories=mongo.db.categories.find())
 
-@app.route('/insert_documentary')
+@app.route('/insert_documentary', methods=['POST'])
 def insert_documentary():
     docus = mongo.db.docus
     docus.insert_one(request.form.to_dict())
