@@ -24,6 +24,10 @@ def get_documentaries():
 def add_documentary():
     return render_template('adddocumentary.html')
 
+# @app.route('/edit_documentary')
+# def edit_documentary():
+#     return render_template('editdocumentary.html')
+
 
 # if __name__ == '__main__':
 #     app.run(host=os.environ.get("IP"),
