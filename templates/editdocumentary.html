@@ -10,7 +10,11 @@
               <i class="material-icons prefix">poll</i>
               <select id="category" name="category_name" required>
                 {% for category in categories %}
-                    <option value="{{category.category_name}}">{{category.category_name}}</option>
+                    {% if category.category_name == documentary.category_name%}
+                        <option value="{{category.category_name}}" selected>{{category.category_name}}</option>
+                    {% else %}
+                       <option value="{{category.category_name}}">{{category.category_name}}</option>
+                    {% endif %}
                 {% endfor %}
               </select>
               <label>Category</label>
