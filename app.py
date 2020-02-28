@@ -51,7 +51,10 @@ def update_documentary(documentary_id):
     })
     return redirect(url_for('get_documentaries'))
 
-
+@app.route('/delete_documentary/<documentary_id>')
+def delete_documentary(documentary_id):
+    mongo.db.docus.remove({'_id': ObjectId(documentary_id)})
+    return redirect(url_for('get_documentaries'))
 
 
 # if __name__ == '__main__':
