@@ -28,9 +28,30 @@ def insert_documentary():
     docus.insert_one(request.form.to_dict())
     return redirect(url_for('get_documentaries'))
 
-# @app.route('/edit_documentary')
-# def edit_documentary():
-#     return render_template('editdocumentary.html')
+@app.route('/edit_documentary/<documentary_id>')
+def edit_documentary(documentary_id):
+    the_documentary = mongo.db.docus.find_one({"_id": ObjectId(documentary_id)})
+
+    all_categories = mongo.db.categories.find()
+    return render_template('editdocumentary.html', documentary=the_documentary, categories=all_categories)
+
+@app.route('/update_documentary/<documentary_id>', methods=["POST"])
+def update_documentary(documentary_id):
+    documentaries = mongo.db.docus
+    documentaries.update( {'_id': ObjectId(documentary_id)}, 
+    {
+        'category_name':request.form.get('category_name'),
+        'docu_title':request.form.get('docu_title'),
+        'docu_summary':request.form.get('docu_summary'),
+        'docu_url': request.form.get('docu_url'),
+        'docu_lenght':request.form.get('docu_lenght'),
+        'docu_produced_by':request.form.get('docu_produced_by'),
+        'docu_language':request.form.get('docu_language'),
+        'docu_img':request.form.get('docu_img')
+    })
+    return redirect(url_for('get_documentaries'))
+
+
 
 
 # if __name__ == '__main__':

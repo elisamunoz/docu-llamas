@@ -33,7 +33,7 @@
             <div class="card__body">
                 <div class="card__body__header">
                     <h6>{{documentary.category_name}}</h6>
-                    <h6>{{documentary.docu_produced_by}} - {{documentary.docu_lenght}}</h6>
+                    <h6>{{documentary.docu_produced_by}} - {{documentary.docu_lenght}} minutes</h6>
                 </div>
               <h4 class="card__body__title">{{documentary.docu_title}}</h4>
               <div class="card__body__txt">
@@ -41,6 +41,7 @@
               </div>
             </div>  
             <a href="{{documentary.docu_url}}" target="_blank" class="card__link">Go to website</a>
+            <a href="{{url_for('edit_documentary', documentary_id=documentary._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
           </article>
         </div>
         {% endfor %}
