@@ -18,6 +18,10 @@ mongo = PyMongo(app)
 def get_documentaries():
     return render_template("home.html", docus=mongo.db.docus.find())
 
+@app.route('/home') # gets documentaries from MongoDB
+def get_home():
+    return render_template("home.html", docus=mongo.db.docus.find())
+
 @app.route('/add_documentary')
 def add_documentary():
     return render_template('adddocumentary.html', categories=mongo.db.categories.find())
