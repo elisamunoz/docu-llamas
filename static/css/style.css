@@ -8,7 +8,7 @@ text-align: justify;
 }
 
 .background-image {
-min-height: calc(100% - 40px);
+min-height: 100%;
 width: 100%;
 display: block;
 background-size: cover;
@@ -25,6 +25,7 @@ width: 80%;
 .title{
 text-align: center;
 font-size: 3vw;
+margin: 0;
 }
 
 /* Header */
@@ -43,6 +44,10 @@ background-color: #f7f7f7;
 transition: background-color 1s ease 0s;
 }
 
+.nav {
+  background-color: #f7f7f7;
+}
+
 .nav-link {
 color: #352523;
 }
@@ -55,7 +60,7 @@ color: #2a201f;
 /* Home */
 .parallax {
 width: 100%;
-height: calc(100vh - 40px);
+height: 60vh;
 background-image: url("../images/01.home_img.jpg");
 background-repeat: no-repeat;
 background-size: cover;
@@ -64,7 +69,6 @@ background-position: center;
 .jumbotron {
 background-color: rgba(0, 0, 0, 0);
 text-align: center;
-margin-top: 7%;
 }
 
 .home-title-container {
@@ -83,6 +87,7 @@ font-size: 6em;
 
 .documentaries{
   background-color: pink;
+  padding: 20px 0;
 }
 
 .docu-grid-area {
