@@ -5,8 +5,8 @@
     <section class="home background-image">
         <div class="jumbotron">
             <div class="container home-title-container">
-                <h1 class="display-4">Docu-meow News</h1>
-                <h6>Science and Nature documeowtaries and news</h6>
+                <h1 class="display-4">Stitching</h1>
+                <h6>Knitting, crochetting and sewing patterns</h6>
             </div>
         </div>
     </section>
@@ -14,40 +14,40 @@
         
 <!-- /Home -->
 
-<!-- Documentaries -->
-<section class="documentaries">
-    <div class="documentaries-container">
-        <h1 class="title">Documeowtaries</h1>
+<!-- Patterns -->
+<section class="patterns">
+    <div class="patterns-container">
+        <h1 class="title">Patterns</h1>
         <!-- images grid -->
-        <div class="docu-grid-area">
-            <div class="docu-grid docu-grid--1">
-                <div class="docu-grid__bg"></div>
-                <div class="docu-grid__title">Lauca, que el parque vuelva a ser parque</div>
+        <div class="pattern-grid-area">
+            <div class="pattern-grid pattern-grid--1">
+                <div class="pattern-grid__bg"></div>
+                <div class="pattern-grid__title">Lauca, que el parque vuelva a ser parque</div>
             </div>
-            <div class="docu-grid docu-grid--2">
-                <div class="docu-grid__bg"></div>
+            <div class="pattern-grid pattern-grid--2">
+                <div class="pattern-grid__bg"></div>
             </div>
-            <div class="docu-grid docu-grid--3">
-                <div class="docu-grid__bg"></div>
+            <div class="pattern-grid pattern-grid--3">
+                <div class="pattern-grid__bg"></div>
             </div>
         </div>
         
         <!-- card -->
-        {% for documentary in docus %}
+        {% for pattern in patterns %}
         <div class="wrapper">
           <article class="card">
-            <a href="{{documentary.docu_url}}" target="_blank"><div class="card__img" style="background-image: url({{documentary.docu_img}})"></div></a>
+            <a href="{{pattern.pattern_url}}" target="_blank"><div class="card__img" style="background-image: url({{pattern.pattern_img}})"></div></a>
             <div class="card__body">
                 <div class="card__body__header">
-                    <h6>{{documentary.category_name}}</h6>
-                    <h6>{{documentary.docu_produced_by}} - {{documentary.docu_lenght}} minutes</h6>
+                    <h6>{{pattern.category_name}}</h6>
+                    <h6>{{pattern.pattern_by}} - {{pattern.pattern_dificulty}}</h6>
                 </div>
-                <a href="{{documentary.docu_url}}" target="_blank"><h4 class="card__body__title">{{documentary.docu_title}}</h4>
+                <a href="{{pattern.pattern_url}}" target="_blank"><h4 class="card__body__title">{{pattern.pattern_name}}</h4>
               <div class="card__body__txt">
-                <p>{{documentary.docu_summary}}</p>
+                <p>{{pattern.pattern_summary}}</p>
               </div></a>
             </div>  
-            <a href="{{url_for('edit_documentary', documentary_id=documentary._id)}}" class="card__link">Edit</a>
+            <a href="{{url_for('edit_pattern', pattern_id=pattern._id)}}" class="card__link">Edit</a>
           </article>
         </div>
         {% endfor %}
