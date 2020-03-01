@@ -20,28 +20,34 @@
         <h1 class="title">Documeowtaries</h1>
         <!-- images grid -->
         <div class="docu-grid-area">
-            <div class="docu-grid docu-grid--1"></div>
-            <div class="docu-grid docu-grid--2"></div>
-            <div class="docu-grid docu-grid--3"></div>
+            <div class="docu-grid docu-grid--1">
+                <div class="docu-grid__bg"></div>
+                <div class="docu-grid__title">Lauca, que el parque vuelva a ser parque</div>
+            </div>
+            <div class="docu-grid docu-grid--2">
+                <div class="docu-grid__bg"></div>
+            </div>
+            <div class="docu-grid docu-grid--3">
+                <div class="docu-grid__bg"></div>
+            </div>
         </div>
         
         <!-- card -->
         {% for documentary in docus %}
         <div class="wrapper">
           <article class="card">
-            <div class="card__img" style="background-image: url({{documentary.docu_img}})"></div>
+            <a href="{{documentary.docu_url}}" target="_blank"><div class="card__img" style="background-image: url({{documentary.docu_img}})"></div></a>
             <div class="card__body">
                 <div class="card__body__header">
                     <h6>{{documentary.category_name}}</h6>
                     <h6>{{documentary.docu_produced_by}} - {{documentary.docu_lenght}} minutes</h6>
                 </div>
-              <h4 class="card__body__title">{{documentary.docu_title}}</h4>
+                <a href="{{documentary.docu_url}}" target="_blank"><h4 class="card__body__title">{{documentary.docu_title}}</h4>
               <div class="card__body__txt">
-              <p>{{documentary.docu_summary}}</p>
-              </div>
+                <p>{{documentary.docu_summary}}</p>
+              </div></a>
             </div>  
-            <a href="{{documentary.docu_url}}" target="_blank" class="card__link">Go to website</a>
-            <a href="{{url_for('edit_documentary', documentary_id=documentary._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+            <a href="{{url_for('edit_documentary', documentary_id=documentary._id)}}" class="card__link">Edit</a>
           </article>
         </div>
         {% endfor %}
