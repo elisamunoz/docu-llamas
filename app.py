@@ -7,58 +7,62 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
-app.config["MONGO_DBNAME"] = "docu_meow"
+app.config["MONGO_DBNAME"] = "stitching"
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
 
 @app.route('/') 
 
-@app.route('/get_documentaries') # gets documentaries from MongoDB
-def get_documentaries():
-    return render_template("home.html", docus=mongo.db.docus.find())
+@app.route('/get_patterns') # get_patterns from MongoDB
+def get_patterns():
+    return render_template("home.html", patterns=mongo.db.patterns.find())
 
-@app.route('/home') # gets documentaries from MongoDB
+@app.route('/home') # gets patterns from MongoDB
 def get_home():
-    return render_template("home.html", docus=mongo.db.docus.find())
+    return render_template("home.html", patterns=mongo.db.patterns.find())
 
-@app.route('/add_documentary')
-def add_documentary():
-    return render_template('adddocumentary.html', categories=mongo.db.categories.find())
+@app.route('/add_pattern')
+def add_pattern():
+    return render_template('addpattern.html', categories=mongo.db.categories.find())
 
-@app.route('/insert_documentary', methods=['POST'])
-def insert_documentary():
-    docus = mongo.db.docus
-    docus.insert_one(request.form.to_dict())
-    return redirect(url_for('get_documentaries'))
+@app.route('/insert_pattern', methods=['POST'])
+def insert_pattern():
+    patterns = mongo.db.patterns
+    patterns.insert_one(request.form.to_dict())
+    return redirect(url_for('get_patterns'))
 
-@app.route('/edit_documentary/<documentary_id>')
-def edit_documentary(documentary_id):
-    the_documentary = mongo.db.docus.find_one({"_id": ObjectId(documentary_id)})
+@app.route('/edit_pattern/<pattern_id>')
+def edit_pattern(pattern_id):
+    the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
 
     all_categories = mongo.db.categories.find()
-    return render_template('editdocumentary.html', documentary=the_documentary, categories=all_categories)
+    return render_template('editpattern.html', pattern=the_pattern, categories=all_categories)
 
-@app.route('/update_documentary/<documentary_id>', methods=["POST"])
-def update_documentary(documentary_id):
-    documentaries = mongo.db.docus
-    documentaries.update( {'_id': ObjectId(documentary_id)}, 
+@app.route('/update_pattern/<pattern_id>', methods=["POST"])
+def update_pattern(pattern_id):
+    patterns = mongo.db.patterns
+    patterns.update( {'_id': ObjectId(pattern_id)}, 
     {
         'category_name':request.form.get('category_name'),
-        'docu_title':request.form.get('docu_title'),
-        'docu_summary':request.form.get('docu_summary'),
-        'docu_url': request.form.get('docu_url'),
-        'docu_lenght':request.form.get('docu_lenght'),
-        'docu_produced_by':request.form.get('docu_produced_by'),
-        'docu_language':request.form.get('docu_language'),
-        'docu_img':request.form.get('docu_img')
+        'pattern_name':request.form.get('pattern_name'),
+        'pattern_by':request.form.get('pattern_by'),
+        'pattern_yarn_weight': request.form.get('pattern_yarn_weight'),
+        'pattern_gauge':request.form.get('pattern_gauge'),
+        'pattern_needle_size':request.form.get('pattern_needle_size'),
+        'pattern_yardage':request.form.get('pattern_yardage'),
+        'pattern_size':request.form.get('pattern_size'),
+        'pattern_language':request.form.get('pattern_language'),
+        'pattern_url':request.form.get('pattern_url'),
+        'pattern_matterials':request.form.get('pattern_matterials'),
+        'pattern_summary':request.form.get('pattern_summary')
     })
-    return redirect(url_for('get_documentaries'))
+    return redirect(url_for('get_patterns'))
 
-@app.route('/delete_documentary/<documentary_id>')
-def delete_documentary(documentary_id):
-    mongo.db.docus.remove({'_id': ObjectId(documentary_id)})
-    return redirect(url_for('get_documentaries'))
+@app.route('/delete_pattern/<pattern_id>')
+def delete_pattern(pattern_id):
+    mongo.db.patterns.remove({'_id': ObjectId(pattern_id)})
+    return redirect(url_for('get_patterns'))
 
 
 # if __name__ == '__main__':
