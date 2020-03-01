@@ -175,6 +175,14 @@ margin: 12px 12px 24px;
   text-transform: capitalize;
 }
 
+.card__body__header__category-icon {
+  background-image: url("../images/needles.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+}
+
 .card__body__title{
 line-height: 1.5;
 margin: 0 0 10px;
