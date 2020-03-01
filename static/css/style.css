@@ -90,12 +90,12 @@ font-weight: 400;
 font-size: 6em;
 }
 
-.documentaries{
+.patterns{
   /* background-color: pink; */
   padding: 20px 0;
 }
 
-.docu-grid-area {
+.pattern-grid-area {
 	margin: 50px auto;
 	display: grid;
 	grid-gap: 10px;
@@ -108,18 +108,18 @@ font-size: 6em;
 	grid-template-rows: 260px 260px 260px;
 }
 
-.docu-grid--1 { grid-area: area_1; }
-.docu-grid--2 { grid-area: area_2; }
-.docu-grid--3 { grid-area: area_3; }
+.pattern-grid--1 { grid-area: area_1; }
+.pattern-grid--2 { grid-area: area_2; }
+.pattern-grid--3 { grid-area: area_3; }
 
-.docu-grid {
+.pattern-grid {
   position: relative;
   overflow: hidden;
   background: gray;
   border-radius: 4px;
 }
 
-.docu-grid__bg{
+.pattern-grid__bg{
   position: absolute;
   height: 100%;
   width: 100%;
@@ -130,11 +130,11 @@ font-size: 6em;
   transition: all .6s;
 }
 
-.docu-grid__bg:hover {
+.pattern-grid__bg:hover {
   transform: scale(1.2);
 }
 
-.docu-grid__title {
+.pattern-grid__title {
   position: absolute;
   transition: all 0.4s ease-in;
   bottom: -100px;
@@ -145,7 +145,7 @@ font-size: 6em;
   padding: 0.4em 1em;
 }
 
-.docu-grid:hover .docu-grid__title {
+.pattern-grid:hover .pattern-grid__title {
   bottom: 0;
 }
 
@@ -201,7 +201,7 @@ text-decoration: none;
 
 /* background-image: url("../images/testimg.jpg"); */
 
-.documentaries-container{
+.patterns-container{
 max-width: 80%;
 margin: auto;
 }
@@ -232,7 +232,7 @@ footer {
 }
 
 @media (min-width: 480px) {
-	.docu-grid-area {
+	.pattern-grid-area {
 		grid-template-areas: "area_1 area_2"
 												 "area_1 area_3";
 
@@ -269,7 +269,7 @@ footer {
 }
 
 @media only screen and (min-width: 1025px) {
-  .documentaries-container{
+  .patterns-container{
     max-width: 60%;
   }
 }
