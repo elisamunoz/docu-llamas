@@ -176,7 +176,7 @@ padding: 15px;
 }
 
 .card__body__header__category-icon {
-  background-image: url("../images/needles.png");
+  background-image: url("../images/icons/needles.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 30px;
@@ -264,7 +264,7 @@ footer {
 	}
 }
 
-@media only screen and (min-width: 980px){
+/* @media only screen and (min-width: 980px){
 .card{
   height: 340px;
   max-width: none;
@@ -289,7 +289,7 @@ footer {
 .card__body__txt{
   max-height: 175px;
   }
-}
+} */
 
 @media only screen and (min-width: 1025px) {
   .patterns-container{
