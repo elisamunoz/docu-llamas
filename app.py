@@ -22,6 +22,13 @@ def get_patterns():
 def get_home():
     return render_template("home.html", patterns=mongo.db.patterns.find())
 
+@app.route('/get_pattern/<pattern_id>')
+def get_pattern(pattern_id):
+    the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
+
+    all_categories = mongo.db.categories.find()
+    return render_template('getpattern.html', pattern=the_pattern, categories=all_categories)
+
 @app.route('/add_pattern')
 def add_pattern():
     return render_template('addpattern.html', categories=mongo.db.categories.find())
@@ -54,8 +61,9 @@ def update_pattern(pattern_id):
         'pattern_size':request.form.get('pattern_size'),
         'pattern_language':request.form.get('pattern_language'),
         'pattern_url':request.form.get('pattern_url'),
-        'pattern_matterials':request.form.get('pattern_matterials'),
-        'pattern_summary':request.form.get('pattern_summary')
+        'pattern_notes':request.form.get('pattern_notes'),
+        'pattern_img':request.form.get('pattern_img'),
+        'pattern_difficulty':request.form.get('pattern_difficulty')
     })
     return redirect(url_for('get_patterns'))
 

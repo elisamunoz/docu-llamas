@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="patterns">
+    <div class="patterns-container">
+        <h1 class="section__title">{{pattern.pattern_name}}</h1>
+        <h5 class="section__sub-title">{{pattern.pattern_by}}</h5>
+        <div class="pattern__img" style="background-image: url({{pattern.pattern_img}})"></div>
+        <p>Category: {{pattern.category_name}}</p>
+        <p>Size: {{pattern.pattern_size}}</p>
+        <p>Difficulty: {{pattern.pattern_difficulty}}</p>
+        <p>Crochet/needle size: {{pattern.pattern_needle_size}}</p>
+        <p>Yarn weight/fabric type: {{pattern.pattern_yarn_weight}}</p>
+        <p>How much do you need?: {{pattern.pattern_yardage}} </p>
+        <p>Gauge: {{pattern.pattern_gauge}}</p>
+        <p>Language: {{pattern.pattern_language}}</p>
+        <p>Link: <a href="{{pattern.pattern_url}}" target="_blank">Click Here</a></p>
+        <p>Notes: {{pattern.pattern_notes}}</p>
+       
+        
+
+    </div>
+</section> 
+
+
+{% endblock %}
