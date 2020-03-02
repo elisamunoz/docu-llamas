@@ -236,6 +236,10 @@ max-width: 80%;
 margin: auto;
 }
 
+.fa-circle { 
+  color: #f16fd5;
+}
+
 /* Footer */
 
 footer {
