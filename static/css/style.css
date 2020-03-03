@@ -90,6 +90,23 @@ font-weight: 400;
 font-size: 6em;
 }
 
+    /* Carousel */
+  
+.carousel.slide {
+  margin: auto;
+  width:100%
+}
+
+.img-center {
+  width: 100%
+}
+
+.carousel-caption h5 {
+  font-style: italic;
+}
+
+/* Patterns */
+
 .patterns{
   /* background-color: pink; */
   padding: 20px 0;
@@ -176,7 +193,6 @@ padding: 15px;
 }
 
 .card__body__header__category-icon {
-  background-image: url("../images/icons/needles.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 30px;
