@@ -39,7 +39,6 @@ top: 0;
 z-index: 5;
 width: 100%;
 height: 40px;
-font-family: "Amatic SC", sans-serif;
 font-size: 1.5em;
 }
 
@@ -64,8 +63,8 @@ color: #2a201f;
 /* Home */
 .parallax {
 width: 100%;
-height: 60vh;
-background-image: url("../images/01.home_img.jpg");
+height: calc(100% - 40px);
+background-image: url("../images/1.jpg");
 background-repeat: no-repeat;
 background-size: cover;
 background-position: center;
@@ -90,11 +89,17 @@ font-weight: 400;
 font-size: 6em;
 }
 
-    /* Carousel */
+    /* Carousel
+
+.home{
+  height: 70%;
+  overflow: hidden;
+}     */
   
 .carousel.slide {
   margin: auto;
-  width:100%
+  width: 100%;
+  height: 100%;
 }
 
 .img-center {
@@ -255,6 +260,12 @@ margin: auto;
 .fa-circle { 
   color: #f16fd5;
 }
+
+/* Pattern*/
+.notes {
+  white-space: pre-wrap;
+}
+
 
 /* Footer */
 
