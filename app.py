@@ -44,7 +44,13 @@ def edit_pattern(pattern_id):
     the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
 
     all_categories = mongo.db.categories.find()
-    return render_template('editpattern.html', pattern=the_pattern, categories=all_categories)
+    all_difficulty = mongo.db.difficulty.find()
+    return render_template(
+        'editpattern.html',
+        pattern=the_pattern,
+        categories=all_categories,
+        difficulty=all_difficulty
+    )
 
 @app.route('/update_pattern/<pattern_id>', methods=["POST"])
 def update_pattern(pattern_id):

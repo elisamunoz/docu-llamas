@@ -1,85 +1,111 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Edit a documentary</h3>
+<h3>Edit a Pattern</h3>
 
 <div class="container">
-    <form action="{{url_for('update_pattern', pattern_id=pattern._id)}}" method="POST">
-      <!-- category name -->
-        <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">poll</i>
-              <select id="category" name="category_name" required>
-                {% for category in categories %}
-                    {% if category.category_name == documentary.category_name%}
-                        <option value="{{category.category_name}}" selected>{{category.category_name}}</option>
-                    {% else %}
-                       <option value="{{category.category_name}}">{{category.category_name}}</option>
-                    {% endif %}
-                {% endfor %}
-              </select>
-              <label>Category</label>
-          </div>
+    <form action="{{url_for('update_pattern', pattern_id=pattern._id)}}" class="row" id="edit" method="POST">
+        <!-- Category name -->
+        <div class="form-group col-md-6">
+          <label for="category">Category:</label>
+            <select id="category" name="category_name" class="form-control " required>
+              {% for category in categories %}
+                {% if category.category_name == pattern.category_name %}
+              <option value="{{category.category_name}}" selected>{{category.category_name}}</option>
+                {% else %}
+                <option value="{{category.category_name}}">{{category.category_name}}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
         </div>
-      <!-- title -->
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">textsms</i>
-            <textarea type="text" id="docu_title" name="docu_title" class="materialize-textarea" required>{{documentary.docu_title}}</textarea>
-            <label for="autocomplete-input">Title</label>
-          </div>
+        <!-- Language -->
+        <div class="form-group col-md-6">
+          <label for="pattern_language">Language:</label>
+            <input type="text" id="pattern_language" name="pattern_language" class="form-control" value="{{pattern.pattern_language}}" required>
         </div>
-      <!-- summary -->
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">textsms</i>
-          <textarea type="text" id="docu_summary" name="docu_summary" class="materialize-textarea" required>{{documentary.docu_summary}}</textarea>
-          <label for="autocomplete-input">Summary</label>
+  
+        <!-- Name -->
+        <div class="form-group col-md-6">
+          <label for="pattern_name">Pattern name:</label>
+            <input type="text" id="pattern_name" name="pattern_name" class="form-control" value="{{pattern.pattern_name}}" required>
         </div>
-      </div>
-      <!-- url -->
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">textsms</i>
-            <input type="url" id="docu_url" name="docu_url" class="materialize-textarea" value="{{documentary.docu_url}}" required>
-            <label for="autocomplete-input">url</label>
-          </div>
+  
+        <!-- pattern by -->
+        <div class="form-group col-md-6">
+          <label for="pattern_by">Pattern_by:</label>
+            <input type="text" id="pattern_by" name="pattern_by" class="form-control" value="{{pattern.pattern_by}}" required>
         </div>
-      <!-- lenght -->
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">textsms</i>
-            <input type="number" id="docu_lenght" name="docu_lenght" class="materialize-textarea" value="{{documentary.docu_lenght}}" required>
-            <label for="autocomplete-input">Length in minutes</label>
-          </div>
+  
+        <!-- Crochet/Needle size -->
+        <div class="form-group col-md-6">
+          <label for="pattern_needle_size">Hook/Needle size:</label>
+            <input type="text" id="pattern_needle_size" name="pattern_needle_size" class="form-control" value="{{pattern.pattern_needle_size}}">
         </div>
-      <!-- produced by -->
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">textsms</i>
-            <textarea type="text" id="docu_produced_by" name="docu_produced_by" class="materialize-textarea" required>{{documentary.docu_produced_by}}</textarea>
-            <label for="autocomplete-input">Produced by</label>
-          </div>
+        
+        <!-- Gauge -->
+        <div class="form-group col-md-6">
+          <label for="pattern_gauge">Gauge:</label>
+            <input type="text" id="pattern_gauge" name="pattern_gauge" class="form-control" value="{{pattern.pattern_gauge}}">
         </div>
-      <!-- language -->
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">textsms</i>
-            <textarea type="text" id="docu_language" name="docu_language" class="materialize-textarea" required>{{documentary.docu_language}}</textarea>
-            <label for="autocomplete-input">Language</label>
-          </div>
+  
+        <!-- Yarn weigth/Fabric type -->
+        <div class="form-group col-md-6">
+          <label for="pattern_yarn_weight">Yarn weigth/Fabric type:</label>
+            <input type="text" id="pattern_yarn_weight" name="pattern_yarn_weight" class="form-control" value="{{pattern.pattern_yarn_weight}}" required>
         </div>
-      <!-- image -->
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">textsms</i>
-            <input type="url" id="docu_img" name="docu_img" class="materialize-textarea" value="{{documentary.docu_img}}" required>
-          </div>
+  
+        <!-- How much do you need? -->
+        <div class="form-group col-md-6">
+          <label for="pattern_yardage">How much do you need?:</label>
+            <input type="text" id="pattern_yardage" name="pattern_yardage" class="form-control" value="{{pattern.pattern_yardage}}" required>
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="action">Edit Meow
-          <i class="material-icons right">send</i>
-        </button>
-        <a  href="{{url_for('delete_documentary', documentary_id=documentary._id)}}" class="waves-effect waves-light btn btn_small">Delete Meow</a>
-        <a  href="{{url_for('get_documentaries')}}" class="waves-effect waves-light btn btn_small">Cancel</a>
-    </form>
+  
+        <!-- Pattern size -->
+        <div class="form-group col-md-6">
+          <label for="pattern_size">Pattern size:</label>
+            <input type="text" id="pattern_size" name="pattern_size" class="form-control" value="{{pattern.pattern_size}}" required>
+        </div>
+  
+        <!-- Difficulty -->
+        <div class="form-group col-md-6">
+          <label for="pattern_difficulty">Skill level:</label>
+            <select id="pattern_difficulty" name="pattern_difficulty" class="form-control " required>
+              {% for diff in difficulty %}
+                {% if diff.pattern_difficulty == pattern.pattern_difficulty %}
+                <option value="{{diff.pattern_difficulty}}" selected>{{diff.pattern_difficulty}}</option>
+                {% else %}
+                <option value="{{diff.pattern_difficulty}}">{{diff.pattern_difficulty}}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+        </div>
+  
+        <!-- url -->
+        <div class="form-group col-md-6">
+          <label for="pattern_url">Pattern url:</label>
+            <input type="url" id="pattern_url" name="pattern_url" class="form-control" value="{{pattern.pattern_url}}" required>
+        </div>
+  
+        <!-- Image -->
+        <div class="form-group col-md-6">
+          <label for="pattern_img">Pattern image:</label>
+            <input type="url" id="pattern_img" name="pattern_img" class="form-control" value="{{pattern.pattern_img}}" required>
+        </div>
+  
+        <!-- Notes -->
+        <div class="form-group col-12">
+          <label for="pattern_notes">Notes:</label>
+            <textarea id="pattern_notes" name="pattern_notes" class="form-control" rows="5" required>{{pattern.pattern_notes}} {{pattern.pattern_difficulty}}</textarea>
+        </div>     
+      
+    </div>
+    </div>
+  </form>
+   <!-- Submit button -->
+   <a href="{{url_for('get_patterns')}}"><button type="submit" form="edit" class="btn btn-danger">Edit Project</button></a>
+
+   <a href="{{url_for('delete_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Delete Project</button></a>
+
+   <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Cancel Project</button></a>
+ </form>
 </div>
 {% endblock %}
