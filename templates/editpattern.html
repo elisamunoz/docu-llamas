@@ -97,15 +97,10 @@
             <textarea id="pattern_notes" name="pattern_notes" class="form-control" rows="5" required>{{pattern.pattern_notes}} {{pattern.pattern_difficulty}}</textarea>
         </div>     
       
-    </div>
-    </div>
   </form>
    <!-- Submit button -->
-   <a href="{{url_for('get_patterns')}}"><button type="submit" form="edit" class="btn btn-danger">Edit Project</button></a>
-
+   <a href="{{url_for('get_patterns')}}"><button type="submit" form="edit" class="btn btn-danger">Update</button></a>
+   <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Cancel</button></a>
    <a href="{{url_for('delete_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Delete Project</button></a>
-
-   <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Cancel Project</button></a>
- </form>
 </div>
 {% endblock %}

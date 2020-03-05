@@ -71,7 +71,7 @@ def update_pattern(pattern_id):
         'pattern_img':request.form.get('pattern_img'),
         'pattern_difficulty':request.form.get('pattern_difficulty')
     })
-    return redirect(url_for('get_patterns'))
+    return get_pattern(pattern_id)
 
 @app.route('/delete_pattern/<pattern_id>')
 def delete_pattern(pattern_id):
