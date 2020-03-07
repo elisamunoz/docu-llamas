@@ -16,11 +16,13 @@ mongo = PyMongo(app)
 
 @app.route('/get_patterns') # get_patterns from MongoDB
 def get_patterns():
-    return render_template("home.html", patterns=mongo.db.patterns.find())
+    all_categories = mongo.db.categories.find()
+    return render_template("home.html", patterns=mongo.db.patterns.find(), categories=all_categories)
 
 @app.route('/home') # gets patterns from MongoDB
 def get_home():
-    return render_template("home.html", patterns=mongo.db.patterns.find())
+    all_categories = mongo.db.categories.find()
+    return render_template("home.html", patterns=mongo.db.patterns.find(), categories=all_categories)
 
 @app.route('/get_pattern/<pattern_id>')
 def get_pattern(pattern_id):
