@@ -6,16 +6,21 @@
         <h5 class="section__sub-title">by {{pattern.pattern_by}}</h5>
         <div class="pattern__img" style="background-image: url({{pattern.pattern_img}})"></div>
         <p>Category: {{pattern.category_name}}</p>
-        <p>Size: {{pattern.pattern_size}}</p>
-        <p>Difficulty: {% include 'difficulty.html' %}</p>
-        <p>Crochet/needle size: {{pattern.pattern_needle_size}}</p>
-        <p>Yarn weight/fabric type: {{pattern.pattern_yarn_weight}}</p>
-        <p>How much do you need?: {{pattern.pattern_yardage}} </p>
-        <p>Gauge: {{pattern.pattern_gauge}}</p>
+        {% if (pattern.category_name == 'knitting' or pattern.category_name == 'crochet' or pattern.category_name == 'sewing') %}
+            <p>Size: {{pattern.pattern_size}}</p>
+            <p>Difficulty: {% include 'difficulty.html' %}</p>
+            {% if (pattern.category_name == 'knitting' or pattern.category_name == 'crochet') %}
+                <p>Crochet/needle size: {{pattern.pattern_needle_size}}</p>
+                <p>Gauge: {{pattern.pattern_gauge}}</p>
+            {% endif %}
+            <p>Yarn weight/fabric type: {{pattern.pattern_yarn_weight}}</p>
+            <p>How much do you need?: {{pattern.pattern_yardage}} </p>
+        {% endif %}
         <p>Language: {{pattern.pattern_language}}</p>
         <p>Link: <a href="{{pattern.pattern_url}}" target="_blank">Click Here</a></p>
         <p>Notes:</p>
         <p class="notes">{{pattern.pattern_notes}}</p>
+        <a href="{{url_for('edit_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Edit</button></a>
     </div>
 </section> 
 
