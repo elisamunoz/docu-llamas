@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add a Project</h3>
+<h3>Add a Project/Article</h3>
 <div class="container">
     <form action="{{url_for('insert_pattern')}}" class="row" method="POST">
       <!-- Category name -->
       <div class="form-group col-md-6">
         <label for="category">Category:</label>
-          <select id="category" name="category_name" class="form-control " required>
+          <select  onchange="fadeOutElementPattern()" id="category" name="category_name" class="form-control " required>
             <option value="" selected>Choose category</option>
             {% for category in categories %}
               <option value="{{category.category_name}}">{{category.category_name}}</option>
@@ -22,48 +22,48 @@
 
       <!-- Name -->
       <div class="form-group col-md-6">
-        <label for="pattern_name">Pattern name:</label>
+        <label for="pattern_name">Project/Article name:</label>
           <input type="text" id="pattern_name" name="pattern_name" class="form-control" required>
       </div>
 
       <!-- pattern by -->
       <div class="form-group col-md-6">
-        <label for="pattern_by">Pattern_by:</label>
+        <label for="pattern_by">Project/Article by:</label>
           <input type="text" id="pattern_by" name="pattern_by" class="form-control" required>
       </div>
 
       <!-- Crochet/Needle size -->
-      <div class="form-group col-md-6">
+      <div id="needle_size" class="form-group col-md-6">
         <label for="pattern_needle_size">Hook/Needle size:</label>
           <input type="text" id="pattern_needle_size" name="pattern_needle_size" class="form-control">
       </div>
       
       <!-- Gauge -->
-      <div class="form-group col-md-6">
+      <div id="gauge" class="form-group col-md-6">
         <label for="pattern_gauge">Gauge:</label>
           <input type="text" id="pattern_gauge" name="pattern_gauge" class="form-control">
       </div>
 
       <!-- Yarn weigth/Fabric type -->
-      <div class="form-group col-md-6">
+      <div id="yarn_weight" class="form-group col-md-6">
         <label for="pattern_yarn_weight">Yarn weigth/Fabric type:</label>
           <input type="text" id="pattern_yarn_weight" name="pattern_yarn_weight" class="form-control" required>
       </div>
 
       <!-- How much do you need? -->
-      <div class="form-group col-md-6">
+      <div id="yardage" class="form-group col-md-6">
         <label for="pattern_yardage">How much do you need?:</label>
           <input type="text" id="pattern_yardage" name="pattern_yardage" class="form-control" required>
       </div>
 
       <!-- Pattern size -->
-      <div class="form-group col-md-6">
-        <label for="pattern_size">Pattern size:</label>
+      <div id="size" class="form-group col-md-6">
+        <label for="pattern_size">Project size:</label>
           <input type="text" id="pattern_size" name="pattern_size" class="form-control" required>
       </div>
 
       <!-- Difficulty -->
-      <div class="form-group col-md-6">
+      <div id="difficulty" class="form-group col-md-6">
         <label for="pattern_difficulty">Skill level:</label>
           <select id="pattern_difficulty" name="pattern_difficulty" class="form-control " required>
             <option value="" selected>Choose difficulty</option>
@@ -75,13 +75,13 @@
 
       <!-- url -->
       <div class="form-group col-md-6">
-        <label for="pattern_url">Pattern url:</label>
+        <label for="pattern_url">Project/Article url:</label>
           <input type="url" id="pattern_url" name="pattern_url" class="form-control" required>
       </div>
 
       <!-- Image -->
       <div class="form-group col-md-6">
-        <label for="pattern_img">Pattern image:</label>
+        <label for="pattern_img">Project/Article image:</label>
           <input type="url" id="pattern_img" name="pattern_img" class="form-control" required>
       </div>
 
