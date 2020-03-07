@@ -61,7 +61,7 @@
 
 <!-- Patterns -->
 <section class="patterns">
-    <div class="patterns-container">
+    <div class="patterns-container container">
         <h1 class="section__title">Patterns</h1>
         <!-- images grid -->
         <div class="pattern-grid-area">
@@ -76,11 +76,22 @@
                 <div class="pattern-grid__bg"></div>
             </div>
         </div>
+
+        <h1>Projects</h1>
+        <h4>Search by:</h4> 
+        <div class="form-group">
+            <select  onchange="fadeOutCards()" id="category" name="category_name" class="form-control ">
+              <option value="" selected>All categories</option>
+              {% for category in categories %}
+                <option value="{{category.category_name}}">{{category.category_name}}</option>
+              {% endfor %}
+            </select>
+        </div>
         
         <!-- card -->
         {% for pattern in patterns %}
-        <div class="wrapper">
-          <article class="card">
+        <div id="card" class="wrapper row">
+          <article class="card col-12 col-md-6 col-lg-4">
             <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" ><div class="card__img" style="background-image: url({{pattern.pattern_img}})"></div>
             </a>  
                 <div class="card__body">
@@ -92,7 +103,7 @@
                         {% elif pattern.category_name == 'sewing' %}
                             <div class= "card__body__header__category-icon" style="background-image: url('../static/images/icons/sewing_machine.png')"></div>
                         {%else%}
-                            <div class= "card__body__header__category-icon"></div>
+                            <div class= "card__body__header__category-icon" style="background-image: url('../static/images/icons/article.png')"></div>
                         {% endif %}
                         <div class="card__body__header__text">
                             <h4 class="card__body__header__title">{{pattern.pattern_name}}</h4>
@@ -105,8 +116,6 @@
                         <p>Language: {{pattern.pattern_language}}</p>
                     </div>
                 </div>
-            
-            <a href="{{url_for('edit_pattern', pattern_id=pattern._id)}}" class="card__link">Edit</a>
           </article>
         </div>
         {% endfor %}
