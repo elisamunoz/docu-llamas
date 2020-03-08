@@ -18,7 +18,7 @@
     />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   </head>
-  <body>
+  <body data-spy="scroll">
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Stitching for Life</a>
@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link" href="{{url_for('get_home')}}">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="{{url_for('get_patterns')}}">Projects</a>
+          <a class="nav-item nav-link" href="{{url_for('get_patterns')}}#projects">Projects</a>
           <a class="nav-item nav-link" href="{{url_for('add_pattern')}}">Add a Project</a>
           <a class="nav-item nav-link" href="">About</a>
         </div>
