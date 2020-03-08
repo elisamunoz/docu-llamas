@@ -1,4 +1,6 @@
-
+$(document).ready(function() {
+    $(window).scroll(fixedNavBar);
+  });
 
 function showField(id) {
     const fieldWrapper = $("#" + id);
@@ -15,12 +17,16 @@ function hiddeField(id) {
     field.attr("required", false);
 }
 
-function fadeOutCards() {
-    var categorySelect = document.getElementById("category")
+function filterCardsByCategory() {
+    var cardsList = document.getElementById("cards");
+    var categorySelect = document.getElementById("category");
     var category = categorySelect.options[categorySelect.selectedIndex].value;
-
-    if (category == "knitting"){
-        console.log("knitting")
+    
+    if(category === '') {
+        $(cardsList).find('.card_wrapper').fadeIn(0);
+    } else {
+        $(cardsList).find('.card_wrapper').fadeOut(0);
+        $(cardsList).find(`.card_wrapper[data-category='${category}']`).fadeIn(1000);
     }
 }
 
@@ -53,5 +59,14 @@ function fadeOutElementPattern(){
             break;
     }
 };
-    
+
+// Navbar to fixed
+
+function fixedNavBar() {
+    if ($(this).scrollTop() > 500) {
+      $(".navbar").addClass("fixed");
+    } else {
+      $(".navbar").removeClass("fixed");
+    }
+  }
 
