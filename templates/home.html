@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
   <!-- Home -->
-  <section class="home">
+  <section id="home" class="home">
     <div class="container">
       <div class="row row-home">
-        <div class="home__text col-12 col-lg-3">
+        <div class="home__text col-12 col-xl-3">
           <h3>Stitching for life</h3>
         </div>
-        <div class="col-12 col-lg-9">
+        <div class="col-12 col-xl-9">
           <div class="home-img"></div>
         </div>
       </div>
@@ -56,8 +56,10 @@
                           </div>
                       </div>
                       <div class="card__body__txt">
+                        {% if (pattern.category_name == 'knitting' or pattern.category_name == 'crochet' or pattern.category_name == 'sewing') %}
                           <p>Pattern size: {{pattern.pattern_size}}</p>
                           <p>Difficulty: {% include 'difficulty.html' %}</p>
+                        {% endif %}
                           <p>Language: {{pattern.pattern_language}}</p>
                       </div>
                   </div>
