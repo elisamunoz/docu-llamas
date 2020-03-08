@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
   <!-- Home -->
-  <section id="home" class="home">
+  <section class="home">
     <div class="container">
       <div class="row row-home">
         <div class="home__text col-12 col-xl-3">
@@ -17,19 +17,21 @@
 
 
   <!-- Patterns -->
-  <section id="projects">
+  <section id="projects" class="projects">
       <div class="container">
           <!-- <h1 class="section__title">About</h1> -->
           
-          <h1>Projects</h1>
-          <h4>Search by:</h4> 
-          <div class="form-group">
-              <select  onchange="filterCardsByCategory()" id="category" name="category_name" class="form-control ">
-                <option value="" selected>All categories</option>
-                {% for category in categories %}
-                  <option value="{{category.category_name}}">{{category.category_name}}</option>
-                {% endfor %}
-              </select>
+          <h1 class="section__title">Projects</h1>
+          <div class="projects__search-by">
+            <h4 class="projects__search-by__search">Search by:</h4> 
+            <div class="form-group projects__search-by__form">
+                <select  onchange="filterCardsByCategory()" id="category" name="category_name" class="form-control ">
+                  <option value="" selected>All categories</option>
+                  {% for category in categories %}
+                    <option value="{{category.category_name}}">{{category.category_name}}</option>
+                  {% endfor %}
+                </select>
+            </div>
           </div>
           
           <!-- card -->
@@ -57,11 +59,11 @@
                       </div>
                       <div class="card__body__txt">
                         {% if (pattern.category_name == 'knitting' or pattern.category_name == 'crochet' or pattern.category_name == 'sewing') %}
-                          <p>Pattern size: {{pattern.pattern_size}}</p>
+                          <!-- <p>Pattern size: {{pattern.pattern_size}}</p> -->
                           <p>Difficulty: {% include 'difficulty.html' %}</p>
                         {% endif %}
-                          <p>Language: {{pattern.pattern_language}}</p>
-                      </div>
+                          <!-- <p>Language: {{pattern.pattern_language}}</p>
+                      </div> -->
                   </div>
             </article>
           </div>

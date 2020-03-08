@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Edit a Project/Article</h3>
+<h3 class="section__title">Edit a Project/Article</h3>
 
 <div class="container">
     <form action="{{url_for('update_pattern', pattern_id=pattern._id)}}" class="row" id="edit" method="POST">
