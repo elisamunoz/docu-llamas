@@ -172,22 +172,26 @@ text-decoration: none;
 
 /* Get pattern*/
 
+.patterns {
+  width: 90%;
+  margin: auto;
+}
+
+.notes {
+  white-space: pre-wrap;
+}
+
 .pattern__img{
   height: 300px;
   margin: 12px;
   background-size: cover;
   background-position: center center;
+  height: 60vh;
   }
 
 .fa-circle { 
   color: #f16fd5;
 }
-
-/* Pattern*/
-.notes {
-  white-space: pre-wrap;
-}
-
 
 /* Footer */
 
@@ -264,4 +268,8 @@ footer {
 .projects__search-by__form  {
   width: 30%;
  }
+
+.patterns {
+  width: 60%;
+}
 }
