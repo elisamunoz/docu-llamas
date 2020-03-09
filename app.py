@@ -81,14 +81,14 @@ def delete_pattern(pattern_id):
     return redirect(url_for('get_patterns'))
 
 
-# if __name__ == '__main__':
-#     app.run(host=os.environ.get("IP"),
-#     port=int(os.environ.get("PORT")),
-#     debug=True)
+if __name__ == '__main__':
+    app.run(host=os.environ.get("IP"),
+    port=int(os.environ.get("PORT")),
+    debug=True)
     
-if __name__ == '__main__': #to run locally
-    app.run(
-        # host='http://127.0.0.1',
-        port=8080,
-        debug=True
-    )
+# if __name__ == '__main__': #to run locally
+#     app.run(
+#         # host='http://127.0.0.1',
+#         port=8080,
+#         debug=True
+#     )
