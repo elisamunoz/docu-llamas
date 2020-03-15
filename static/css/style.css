@@ -184,6 +184,19 @@ text-decoration: none;
   color: #f16fd5;
 }
 
+/* Errors */
+
+.error__txt {
+  transform: translate(8%, 38%);
+  height: 100%;
+}
+
+.error__img {
+  transform: scaleX(-1);
+  height: calc(100vh - 160px);
+}
+
+
 /* Footer */
 
 footer {
