@@ -1,98 +1,157 @@
 {% extends 'base.html' %} {% block content %}
 
+
 <h3 section__title>Add a Project/Article</h3>
 <div class="container">
     <form action="{{url_for('insert_pattern')}}" class="row" method="POST">
       <!-- Category name -->
       <div class="form-group col-md-6">
-        <label for="category">Category:</label>
+        <!-- <label for="category">Category:</label>
           <select  onchange="fadeOutElementPattern()" id="category" name="category_name" class="form-control " required>
             <option value="" selected>Choose category</option>
             {% for category in categories %}
               <option value="{{category.category_name}}">{{category.category_name}}</option>
             {% endfor %}
-          </select>
+          </select> -->
+          <p>
+            {{ form.category.label }}<br>
+            {{ form.category(class="form-control") }}
+          </p>
+          
       </div>
 
       <!-- Language -->
       <div class="form-group col-md-6">
-        <label for="pattern_language">Language:</label>
-          <input type="text" id="pattern_language" name="pattern_language" class="form-control" required>
+        <!-- <label for="pattern_language">Language:</label>
+          <input type="text" id="pattern_language" name="pattern_language" class="form-control" required> -->
+        <p>
+          {{ form.language.label }}<br>
+          {{ form.language(class="form-control") }}
+        </p>
       </div>
 
       <!-- Name -->
       <div class="form-group col-md-6">
-        <label for="pattern_name">Project/Article name:</label>
-          <input type="text" id="pattern_name" name="pattern_name" class="form-control" required>
+        <!-- <label for="pattern_name">Project/Article name:</label>
+          <input type="text" id="pattern_name" name="pattern_name" class="form-control" required> -->
+          <p>
+            {{ form.name.label }}<br>
+            {{ form.name(class="form-control") }}
+          </p>
       </div>
 
       <!-- pattern by -->
       <div class="form-group col-md-6">
-        <label for="pattern_by">Project/Article by:</label>
-          <input type="text" id="pattern_by" name="pattern_by" class="form-control" required>
+        <!-- <label for="pattern_by">Project/Article by:</label>
+          <input type="text" id="pattern_by" name="pattern_by" class="form-control" required> -->
+          <p>
+            {{ form.pattern_by.label }}<br>
+            {{ form.pattern_by(class="form-control") }}
+          </p>
       </div>
 
       <!-- Crochet/Needle size -->
       <div id="needle_size" class="form-group col-md-6">
-        <label for="pattern_needle_size">Hook/Needle size:</label>
-          <input type="text" id="pattern_needle_size" name="pattern_needle_size" class="form-control">
+        <!-- <label for="pattern_needle_size">Hook/Needle size:</label>
+          <input type="text" id="pattern_needle_size" name="pattern_needle_size" class="form-control"> -->
+          <p>
+            {{ form.hook.label }}<br>
+            {{ form.hook(class="form-control") }}
+          </p>
       </div>
       
       <!-- Gauge -->
       <div id="gauge" class="form-group col-md-6">
-        <label for="pattern_gauge">Gauge:</label>
-          <input type="text" id="pattern_gauge" name="pattern_gauge" class="form-control">
+        <!-- <label for="pattern_gauge">Gauge:</label>
+          <input type="text" id="pattern_gauge" name="pattern_gauge" class="form-control"> -->
+          <p>
+            {{ form.gauge.label }}<br>
+            {{ form.gauge(class="form-control") }}
+          </p>
       </div>
 
       <!-- Yarn weigth/Fabric type -->
       <div id="yarn_weight" class="form-group col-md-6">
-        <label for="pattern_yarn_weight">Yarn weigth/Fabric type:</label>
-          <input type="text" id="pattern_yarn_weight" name="pattern_yarn_weight" class="form-control" required>
+        <!-- <label for="pattern_yarn_weight">Yarn weigth/Fabric type:</label>
+          <input type="text" id="pattern_yarn_weight" name="pattern_yarn_weight" class="form-control" required> -->
+          <p>
+            {{ form.yarn_weight.label }}<br>
+            {{ form.yarn_weight(class="form-control") }}
+          </p>
       </div>
 
       <!-- How much do you need? -->
       <div id="yardage" class="form-group col-md-6">
-        <label for="pattern_yardage">How much do you need?:</label>
-          <input type="text" id="pattern_yardage" name="pattern_yardage" class="form-control" required>
+        <!-- <label for="pattern_yardage">How much do you need?:</label>
+          <input type="text" id="pattern_yardage" name="pattern_yardage" class="form-control" required> -->
+          <p>
+            {{ form.yardage.label }}<br>
+            {{ form.yardage(class="form-control") }}
+          </p>
       </div>
 
       <!-- Pattern size -->
       <div id="size" class="form-group col-md-6">
-        <label for="pattern_size">Project size:</label>
-          <input type="text" id="pattern_size" name="pattern_size" class="form-control" required>
+        <!-- <label for="pattern_size">Project size:</label>
+          <input type="text" id="pattern_size" name="pattern_size" class="form-control" required> -->
+          <p>
+            {{ form.size.label }}<br>
+            {{ form.size(class="form-control") }}
+          </p>
       </div>
 
       <!-- Difficulty -->
       <div id="difficulty" class="form-group col-md-6">
-        <label for="pattern_difficulty">Skill level:</label>
+        <!-- <label for="pattern_difficulty">Skill level:</label>
           <select id="pattern_difficulty" name="pattern_difficulty" class="form-control " required>
             <option value="" selected>Choose difficulty</option>
               <option value="beginner">beginner</option>
               <option value="intermediate">intermediate</option>
               <option value="advanced">advanced</option>
-          </select>
+          </select> -->
+          <p>
+            {{ form.difficulty.label }}<br>
+            {{ form.difficulty(class="form-control") }}
+          </p>
+          
+
       </div>
 
       <!-- url -->
       <div class="form-group col-md-6">
-        <label for="pattern_url">Project/Article url:</label>
-          <input type="url" id="pattern_url" name="pattern_url" class="form-control" required>
+        <!-- <label for="pattern_url">Project/Article url:</label>
+          <input type="url" id="pattern_url" name="pattern_url" class="form-control" required> -->
+          <p>
+            {{ form.url.label }}<br>
+            {{ form.url(class="form-control") }}
+          </p>
       </div>
 
       <!-- Image -->
       <div class="form-group col-md-6">
-        <label for="pattern_img">Project/Article image:</label>
-          <input type="url" id="pattern_img" name="pattern_img" class="form-control" required>
+        <!-- <label for="pattern_img">Project/Article image:</label>
+          <input type="url" id="pattern_img" name="pattern_img" class="form-control" required> -->
+          <p>
+            {{ form.img.label }}<br>
+            {{ form.img(class="form-control") }}
+          </p>
       </div>
 
       <!-- Notes -->
       <div class="form-group col-12">
-        <label for="pattern_notes">Notes:</label>
-          <textarea id="pattern_notes" name="pattern_notes" class="form-control" rows="5" required></textarea>
+        <!-- <label for="pattern_notes">Notes:</label>
+          <textarea id="pattern_notes" name="pattern_notes" class="form-control" rows="5" required></textarea> -->
+          <p>
+            {{ form.notes.label }}<br>
+            {{ form.notes(rows="5", class="form-control") }}
+          </p>
       </div>
 
       <!-- Submit button -->
-      <button type="submit" class="btn btn-danger">Add Project</button>
+      <!-- <button type="submit" class="btn btn-danger">Add Project</button> -->
+        <p>
+          {{ form.submit.label(class="btn btn-danger") }}
+        </p>
     </form>
 </div>
 </div>

@@ -4,11 +4,14 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
   import env
+from forms import UpdateForm
+
 
 app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = "stitching"
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config['SECRET_KEY'] =  os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
@@ -33,13 +36,20 @@ def get_pattern(pattern_id):
 
     except Exception as e:
         return render_template('404.html')
-
-
-
     
 @app.route('/add_pattern')
 def add_pattern():
-    return render_template('addpattern.html', categories=mongo.db.categories.find())
+    all_categories = mongo.db.categories.find()
+    all_difficulty = mongo.db.difficulty.find()
+
+    form = UpdateForm()
+    form.category.choices = [("", " ")] + [(cat['_id'], cat['category_name']) for cat in all_categories]
+    form.difficulty.choices = [("", " ")] + [(diff['_id'], diff['pattern_difficulty']) for diff in all_difficulty]
+
+    return render_template(
+        'addpattern.html',
+        form=form
+    )
 
 @app.route('/insert_pattern', methods=['POST'])
 def insert_pattern():
