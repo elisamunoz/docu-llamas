@@ -36,20 +36,22 @@ def get_pattern(pattern_id):
 
     except Exception as e:
         return render_template('404.html')
-    
-@app.route('/add_pattern')
-def add_pattern():
+
+def patternForm():
     all_categories = mongo.db.categories.find()
     all_difficulty = mongo.db.difficulty.find()
 
     form = UpdateForm()
-    form.category.choices = [("", " ")] + [(cat['_id'], cat['category_name']) for cat in all_categories]
-    form.difficulty.choices = [("", " ")] + [(diff['_id'], diff['pattern_difficulty']) for diff in all_difficulty]
+    form.category_name.choices = [("", " ")] + [(cat['category_name'], cat['category_name']) for cat in all_categories]
+    form.pattern_difficulty.choices = [("", " ")] + [(diff['pattern_difficulty'], diff['pattern_difficulty']) for diff in all_difficulty]
 
-    return render_template(
-        'addpattern.html',
-        form=form
-    )
+    return form
+
+@app.route('/add_pattern')
+def add_pattern():
+    form = patternForm()
+
+    return render_template('addpattern.html', form=form, isNew=True)
 
 @app.route('/insert_pattern', methods=['POST'])
 def insert_pattern():
@@ -61,17 +63,41 @@ def insert_pattern():
 def edit_pattern(pattern_id):
     try:
         the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
+        form = patternForm()
 
-        all_categories = mongo.db.categories.find()
-        all_difficulty = mongo.db.difficulty.find()
-        return render_template(
-            'editpattern.html',
-            pattern=the_pattern,
-            categories=all_categories,
-            difficulty=all_difficulty
-        )
+        # Set default values
+        form.category_name.default = the_pattern['category_name']
+        form.pattern_language.default = the_pattern['pattern_language']
+        form.pattern_name.default = the_pattern['pattern_name']
+        form.pattern_by.default = the_pattern['pattern_by']
+        form.pattern_needle_size.default = the_pattern['pattern_needle_size']
+        form.pattern_gauge.default = the_pattern['pattern_gauge']
+        form.pattern_yarn_weight.default = the_pattern['pattern_yarn_weight']
+        form.pattern_yardage.default = the_pattern['pattern_yardage']
+        form.pattern_size.default = the_pattern['pattern_size']
+        form.pattern_difficulty.default = the_pattern['pattern_difficulty']
+        form.pattern_url.default = the_pattern['pattern_url']
+        form.pattern_img.default = the_pattern['pattern_img']
+        form.pattern_notes.default = the_pattern['pattern_notes']
+        form.process()
+
+        return render_template('addpattern.html', form=form, isNew=False)
+
     except Exception as e:
         return render_template('404.html')
+    # try:
+    #     the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
+
+    #     all_categories = mongo.db.categories.find()
+    #     all_difficulty = mongo.db.difficulty.find()
+    #     return render_template(
+    #         'editpattern.html',
+    #         pattern=the_pattern,
+    #         categories=all_categories,
+    #         difficulty=all_difficulty
+    #     )
+    # except Exception as e:
+    #     return render_template('404.html')
     
 
 @app.route('/update_pattern/<pattern_id>', methods=["POST"])
