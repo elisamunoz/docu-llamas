@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, request
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
@@ -24,13 +24,17 @@ def get_patterns():
 
 @app.route('/home') # gets patterns from MongoDB
 def get_home():
-    page = 1
-    ppp = 6
-    skip = (page - 1) * ppp
+    page = request.args.get('page', default = 1, type = int)
+    patterns_per_page = 6
+    skip = (page - 1) * patterns_per_page
 
     all_categories = mongo.db.categories.find()
-    patterns = mongo.db.patterns.find().skip(skip).limit(ppp)
-    return render_template("home.html", patterns=patterns, categories=all_categories)
+    total_patterns = mongo.db.patterns.count() 
+   
+    patterns = mongo.db.patterns.find().skip(skip).limit(patterns_per_page)
+    return render_template("home.html", patterns=patterns, total_patterns=total_patterns, categories=all_categories)
+
+    
 
 @app.route('/get_pattern/<pattern_id>')
 def get_pattern(pattern_id):
