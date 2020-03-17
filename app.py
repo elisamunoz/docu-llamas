@@ -24,8 +24,13 @@ def get_patterns():
 
 @app.route('/home') # gets patterns from MongoDB
 def get_home():
+    page = 1
+    ppp = 6
+    skip = (page - 1) * ppp
+
     all_categories = mongo.db.categories.find()
-    return render_template("home.html", patterns=mongo.db.patterns.find(), categories=all_categories)
+    patterns = mongo.db.patterns.find().skip(skip).limit(ppp)
+    return render_template("home.html", patterns=patterns, categories=all_categories)
 
 @app.route('/get_pattern/<pattern_id>')
 def get_pattern(pattern_id):
