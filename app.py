@@ -5,6 +5,7 @@ from bson.objectid import ObjectId
 if os.path.exists("env.py"):
   import env
 from forms import UpdateForm
+import math
 
 
 app = Flask(__name__)
@@ -19,20 +20,31 @@ mongo = PyMongo(app)
 
 @app.route('/get_patterns') # get_patterns from MongoDB
 def get_patterns():
-    all_categories = mongo.db.categories.find()
-    return render_template("home.html", patterns=mongo.db.patterns.find(), categories=all_categories)
+    page = request.args.get('page')
+    # all_categories = mongo.db.categories.find()
+    # return render_template("home.html", patterns=mongo.db.patterns.find(), categories=all_categories)
+    return redirect(url_for('get_home',_anchor='projects', page=page))
 
 @app.route('/home') # gets patterns from MongoDB
 def get_home():
     page = request.args.get('page', default = 1, type = int)
     patterns_per_page = 6
     skip = (page - 1) * patterns_per_page
-
+   
     all_categories = mongo.db.categories.find()
-    total_patterns = mongo.db.patterns.count() 
+    total_patterns = mongo.db.patterns.estimated_document_count() 
+    total_pages = int(math.ceil(total_patterns / patterns_per_page))
+    print('total_pages')
+    print(total_pages)
    
     patterns = mongo.db.patterns.find().skip(skip).limit(patterns_per_page)
-    return render_template("home.html", patterns=patterns, total_patterns=total_patterns, categories=all_categories)
+    return render_template(
+        "home.html",
+        patterns=patterns,
+        total_pages=total_pages,
+        current_page=page,
+        categories=all_categories
+    )
 
     
 

@@ -68,6 +68,24 @@
             </article>
           </div>
           {% endfor %}
+          <!-- Pagination -->
+           <nav class="nav-center" aria-label="...">
+            <ul class="pagination">
+              {% if current_page != 1%}
+                <li class="page-item"><a class="page-link" href="{{url_for('get_patterns', page=(current_page - 1))}}">Previous</a></li>
+              {% endif %}
+              {% for page in range(total_pages) %}
+                {% if (page + 1) == current_page %}
+                <li class="page-item active"><a class="page-link" href="{{url_for('get_patterns', page=(page + 1))}}">{{page + 1}}<span class="sr-only">(current)</span></a></li>
+                {% else %}
+                <li class="page-item"><a class="page-link" href="{{url_for('get_patterns', page=(page + 1))}}">{{page + 1}}</a></li>   
+                {% endif %}
+              {% endfor %}
+              {% if current_page != total_pages %}
+                <li class="page-item"><a class="page-link" href="{{url_for('get_patterns', page=(current_page + 1))}}">Next</a></li>
+              {% endif %}
+            </ul>
+          </nav>
         </div>
       </div>
   </section>
