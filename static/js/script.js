@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(window).scroll(fixedNavBar);
+    // $(window).scroll(fixedNavBar);
   });
 
 function showField(id) {
@@ -62,11 +62,11 @@ function fadeOutElementPattern(){
 
 // Navbar to fixed
 
-function fixedNavBar() {
-    if ($(this).scrollTop() > 500) {
-      $(".navbar").addClass("fixed");
-    } else {
-      $(".navbar").removeClass("fixed");
-    }
-  }
+// function fixedNavBar() {
+//     if ($(this).scrollTop() > 400) {
+//       $(".navbar").addClass("fixed");
+//     } else {
+//       $(".navbar").removeClass("fixed");
+//     }
+//   }
 

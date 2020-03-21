@@ -28,16 +28,16 @@ text-align: justify;
 top: 0;
 z-index: 5;
 width: 100%;
-min-height: 120px;
+min-height: 60px;
 font-size: 1.5em;
 background-color: #f7f7f7;
+position: fixed;
 }
 
-.fixed {
+/* .fixed {
 position: fixed;
-height: 55px;
 transition: background-color 1s ease 1s;
-}
+} */
 
 .nav-link {
 color: #352523;
@@ -70,15 +70,15 @@ height: 84vh;
 }
 
 
-/* Projects */
+/* Patterns in main page */
 
 .projects {
   padding-top: 220px;
 }
 
 .projects__search-by {
-padding: 30px 0;
-text-align: center;
+  padding: 30px 0;
+  text-align: center;
 }
 
 .projects__search-by__search{
@@ -91,24 +91,22 @@ text-align: center;
 }
 
 .card{
-position: relative;
-padding: 0 0 30px;
-margin: 24px auto;
-max-width: 600px;
-border: none;
+  position: relative;
+  margin: 10px auto;
+  max-width: 600px;
+  border: none;
 }
 
-.card__img{
-height: 260px;
-margin: 12px;
-background-image: url("https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_960_720.jpg");
-background-size: cover;
-background-position: center center;
+.card__img {
+  height: 260px;
+  margin: 12px;
+  background-image: url("https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_960_720.jpg");
+  background-size: cover;
+  background-position: center center;
 }
 
 .card__body {
-margin: 12px 12px 24px;
-padding: 15px;
+  padding: 0 15px;
 }
 
 .card__body__header h6 {
@@ -147,11 +145,15 @@ white-space: nowrap;
 overflow: hidden;
 }
 
-.card__body__txt{
+.card__body__txt {
 line-height: 1.2;
 font-size: 1em;
 max-height: 96px;
-padding-top: 15px;
+padding-top: 3px;
+}
+
+.card__body__txt p {
+  padding-left: 46px;
 }
 
 .card__link{
@@ -166,13 +168,14 @@ text-decoration: none;
 .patterns {
   width: 90%;
   margin: auto;
+  margin-top: 60px;
 }
 
 .notes {
   white-space: pre-wrap;
 }
 
-.pattern__img{
+.pattern__img {
   height: 300px;
   margin: 12px;
   background-size: cover;
@@ -180,8 +183,22 @@ text-decoration: none;
   height: 60vh;
   }
 
+.patterns__txt {
+    margin: 12px;
+  }
+
+.patterns__txt{
+  font-size: 1.3rem;
+}
+
 .fa-circle { 
   color: #f16fd5;
+  padding: 2px;
+}
+
+/* Pagination */
+.nav-center {
+  margin: auto;
 }
 
 /* Errors */
@@ -193,7 +210,7 @@ text-decoration: none;
 
 .error__img {
   transform: scaleX(-1);
-  height: calc(100vh - 160px);
+  height: calc(100vh - 95px);
 }
 
 
@@ -223,7 +240,7 @@ footer {
 }
 
 .error {
-  height: calc(100vh - 160px);
+  height: calc(100vh - 95px);
 }
 
 /* .background__error {

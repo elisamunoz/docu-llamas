@@ -72,7 +72,11 @@ def patternForm():
 def add_pattern():
     form = patternForm()
 
-    return render_template('addpattern.html', form=form, isNew=True)
+    return render_template(
+        'addpattern.html',
+        form=form,
+        isNew=True
+    )
 
 @app.route('/insert_pattern', methods=['POST'])
 def insert_pattern():
@@ -102,7 +106,12 @@ def edit_pattern(pattern_id):
         form.pattern_notes.default = the_pattern['pattern_notes']
         form.process()
 
-        return render_template('addpattern.html', form=form, isNew=False)
+        return render_template(
+            'addpattern.html',
+            form=form,
+            isNew=False,
+            id=pattern_id
+        )
 
     except Exception as e:
         return render_template('404.html')

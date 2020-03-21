@@ -6,14 +6,18 @@
   <h3 class="section__title">Edit a Project/Article</h3>
 {% endif %}
 <div class="container">
-    <form action="{{url_for('insert_pattern')}}" id="add-edit" class="row" method="POST">
+  
+  {% if isNew==True %}
+    <form action="{{url_for('insert_pattern')}}" class="row" method="POST">
+  {% else %}
+    <form action="{{url_for('update_pattern', pattern_id=id)}}" class="row" method="POST">
+  {% endif %}
       <!-- Category name -->
       <div class="form-group col-md-6">
           <p>
             {{ form.category_name.label }}<br>
             {{ form.category_name(class="form-control") }}
-          </p>
-          
+          </p>       
       </div>
 
       <!-- Language -->
@@ -117,18 +121,17 @@
       </div>
 
       <!-- Submit button -->
-     
-        <!-- <button type="submit" class="btn btn-danger">Add Project</button> -->
-     
-    </form>
-
-    <a href="{{url_for('get_patterns')}}"><button type="submit" form="add-edit" class="btn btn-danger">Update</button></a>
-    <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Cancel</button></a>
-    <a href="{{url_for('delete_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Delete</button></a>  
-      
-       
+      {% if isNew==True %}
+        <button type="submit" class="btn btn-danger">Add Project</button>
+        {% else %}
+        we are insied
+        <button type="submit" class="btn btn-danger">Update</button>
+        <a href="{{url_for('get_pattern', pattern_id=id)}}" class="btn btn-danger">Cancel</a>
+        <a href="{{url_for('delete_pattern', pattern_id=id)}}"><button type="button" class="btn btn-danger">Delete</button></a>
+      {% endif %}
     
-   
+    </form>
+       
 </div>
 </div>
   
