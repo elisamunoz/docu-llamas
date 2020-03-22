@@ -5,8 +5,8 @@
 {% else %}
   <h3 class="section__title">Edit a Project/Article</h3>
 {% endif %}
+
 <div class="container">
-  
   {% if isNew==True %}
     <form action="{{url_for('insert_pattern')}}" class="row" method="POST">
   {% else %}
@@ -104,8 +104,6 @@
 
       <!-- Image -->
       <div class="form-group col-md-6">
-        <!-- <label for="pattern_img">Project/Article image:</label>
-          <input type="url" id="pattern_img" name="pattern_img" class="form-control" required> -->
           <p>
             {{ form.pattern_img.label }}<br>
             {{ form.pattern_img(class="form-control") }}
@@ -119,20 +117,19 @@
             {{ form.pattern_notes(rows="5", class="form-control") }}
           </p>
       </div>
-
-      <!-- Submit button -->
+      <!-- Form buttons -->
+      <div class="buttons">
       {% if isNew==True %}
+        <!-- Submit button -->
         <button type="submit" class="btn btn-danger">Add Project</button>
-        {% else %}
-        we are insied
+      {% else %}
+        <!-- Update, Cancel and Delete buttons -->
         <button type="submit" class="btn btn-danger">Update</button>
         <a href="{{url_for('get_pattern', pattern_id=id)}}" class="btn btn-danger">Cancel</a>
-        <a href="{{url_for('delete_pattern', pattern_id=id)}}"><button type="button" class="btn btn-danger">Delete</button></a>
-      {% endif %}
-    
-    </form>
-       
-</div>
+        <a href="{{url_for('delete_pattern', pattern_id=id)}}" class="btn btn-danger">Delete</a>
+      {% endif %}  
+    </div>  
+  </form>
 </div>
   
 

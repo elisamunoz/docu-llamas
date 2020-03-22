@@ -7,16 +7,21 @@ a:hover {
 body,
 html {
 height: 100%;
-font-family: "Roboto", sans-serif;
+font-family: 'Lato', sans-serif;
 text-align: justify;
 }
 
-
+.site-content {
+  margin-top: 66px;
+  padding: 60px 0;
+}
 
 .section__title {
   text-align: center;
-  font-size: 3em;
+  font-size: 4em;
   margin: 0;
+  padding-bottom: 30px;
+  font-family: 'Sacramento', cursive;
 }
 
 .section__sub-title {
@@ -168,7 +173,6 @@ text-decoration: none;
 .patterns {
   width: 90%;
   margin: auto;
-  margin-top: 60px;
 }
 
 .notes {
@@ -177,7 +181,7 @@ text-decoration: none;
 
 .pattern__img {
   height: 300px;
-  margin: 12px;
+  margin: 60px 12px;
   background-size: cover;
   background-position: center center;
   height: 60vh;
@@ -199,6 +203,16 @@ text-decoration: none;
 /* Pagination */
 .nav-center {
   margin: auto;
+}
+
+
+/* Add/Edit Pattern */
+
+.buttons {
+  width: 100%;
+  text-align: right;
+  padding-right: 15px;
+  padding-top: 20px;
 }
 
 /* Errors */

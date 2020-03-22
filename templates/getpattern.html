@@ -21,6 +21,8 @@
             <p><strong>Link:</strong> <a href="{{pattern.pattern_url}}" target="_blank">Click Here</a></p>
             <p><strong>Notes:</strong></p>
             <p class="notes">{{pattern.pattern_notes}}</p>
+        </div>
+        <div class="buttons">
             <a href="{{url_for('edit_pattern', pattern_id=pattern._id)}}" type="button"><button class="btn btn-danger">Edit</button></a>
         </div>
     </div>
