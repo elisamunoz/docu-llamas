@@ -34,8 +34,6 @@ def get_home():
     all_categories = mongo.db.categories.find()
     total_patterns = mongo.db.patterns.estimated_document_count() 
     total_pages = int(math.ceil(total_patterns / patterns_per_page))
-    print('total_pages')
-    print(total_pages)
    
     patterns = mongo.db.patterns.find().skip(skip).limit(patterns_per_page)
     return render_template(
