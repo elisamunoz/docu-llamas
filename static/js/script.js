@@ -17,18 +17,18 @@ function hiddeField(id) {
     field.attr("required", false);
 }
 
-function filterCardsByCategory() {
-    var cardsList = document.getElementById("cards");
-    var categorySelect = document.getElementById("category");
-    var category = categorySelect.options[categorySelect.selectedIndex].value;
+// function filterCardsByCategory() {
+//     var cardsList = document.getElementById("cards");
+//     var categorySelect = document.getElementById("category");
+//     var category = categorySelect.options[categorySelect.selectedIndex].value;
     
-    if(category === '') {
-        $(cardsList).find('.card_wrapper').fadeIn(0);
-    } else {
-        $(cardsList).find('.card_wrapper').fadeOut(0);
-        $(cardsList).find(`.card_wrapper[data-category='${category}']`).fadeIn(1000);
-    }
-}
+//     if(category === '') {
+//         $(cardsList).find('.card_wrapper').fadeIn(0);
+//     } else {
+//         $(cardsList).find('.card_wrapper').fadeOut(0);
+//         $(cardsList).find(`.card_wrapper[data-category='${category}']`).fadeIn(1000);
+//     }
+// }
 
 // Fades out and set to no required no needed elements in addpattern.html`
 function fadeOutElementPattern(){
@@ -63,7 +63,7 @@ function fadeOutElementPattern(){
 // Navbar to fixed
 
 // function fixedNavBar() {
-//     if ($(this).scrollTop() > 400) {
+//     if ($(this).scrollTop() > 200) {
 //       $(".navbar").addClass("fixed");
 //     } else {
 //       $(".navbar").removeClass("fixed");
