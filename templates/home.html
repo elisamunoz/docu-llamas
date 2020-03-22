@@ -22,18 +22,7 @@
           <!-- <h1 class="section__title">About</h1> -->
           
           <h1 class="section__title">Projects</h1>
-          <div class="projects__search-by">
-            <h4 class="projects__search-by__search">Search by:</h4> 
-            <div class="form-group projects__search-by__form">
-                <select  onchange="filterCardsByCategory()" id="category" name="category_name" class="form-control ">
-                  <option value="" selected>All categories</option>
-                  {% for category in categories %}
-                    <option value="{{category.category_name}}">{{category.category_name}}</option>
-                  {% endfor %}
-                </select>
-            </div>
-          </div>
-          
+                    
           <!-- card -->
         <div id="cards" class="row">
           {% for pattern in patterns %}
@@ -68,8 +57,10 @@
             </article>
           </div>
           {% endfor %}
-          <!-- Pagination -->
-           <nav class="nav-center" aria-label="...">
+        </div>
+        <!-- Pagination -->
+        <div class="row">
+          <nav class="nav-center" aria-label="...">
             <ul class="pagination">
               {% if current_page != 1%}
                 <li class="page-item"><a class="page-link" href="{{url_for('get_patterns', page=(current_page - 1))}}">Previous</a></li>
@@ -89,5 +80,4 @@
         </div>
       </div>
   </section>
-  
 {% endblock %}
