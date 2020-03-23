@@ -12,13 +12,13 @@ text-align: justify;
 }
 
 .site-content {
-  /* margin-top: 66px; */
   padding: 60px 0;
+  min-height: calc(100vh - 40px);
 }
 
 .section__title {
   text-align: center;
-  font-size: 4em;
+  font-size: 5em;
   margin: 0;
   padding-top: 70px;
   padding-bottom: 30px;
@@ -34,7 +34,7 @@ text-align: justify;
 top: 0;
 z-index: 5;
 width: 100%;
-min-height: 60px;
+min-height: 100px;
 /* background-color: #f7f7f7; */
 background-color: yellowgreen;
 position: fixed;
@@ -43,7 +43,7 @@ position: fixed;
 .navbar-brand {
   font-family: 'Sacramento', cursive;
   padding: 0;
-  font-size: 2em;
+  font-size: 3em;
   padding-left: 60px;
 }
 
@@ -52,10 +52,14 @@ position: fixed;
   font-size: 1.3em;
 }
 
-/* .fixed {
-position: fixed;
+.fixed {
 transition: background-color 1s ease 1s;
-} */
+min-height: 60px;
+}
+
+.navbar-brand-small {
+  font-size: 2em;
+}
 
 .nav-link {
 color: #352523;
@@ -92,12 +96,23 @@ height: 84vh;
   height: 35vh;
 }
 
+/* About */
+.about {
+  padding-top: 200px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.about p {
+  font-size: 1.3em;
+}
+
+.about h3 {
+  padding: 20px 0 6px;
+  font-size: 2em;
+}
 
 /* Patterns in main page */
-
-.projects {
-  padding-top: 220px;
-}
 
 .projects__search-by {
   padding: 30px 0;

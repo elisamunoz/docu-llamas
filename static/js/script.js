@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // $(window).scroll(fixedNavBar);
+    $(window).scroll(fixedNavBar);
   });
 
 function showField(id) {
@@ -62,11 +62,13 @@ function fadeOutElementPattern(){
 
 // Navbar to fixed
 
-// function fixedNavBar() {
-//     if ($(this).scrollTop() > 200) {
-//       $(".navbar").addClass("fixed");
-//     } else {
-//       $(".navbar").removeClass("fixed");
-//     }
-//   }
+function fixedNavBar() {
+    if ($(this).scrollTop() > 200) {
+      $(".navbar").addClass("fixed");
+      $(".navbar-brand").addClass("navbar-brand-small");
+    } else {
+      $(".navbar").removeClass("fixed");
+      $(".navbar-brand").removeClass("navbar-brand-small");
+    }
+  }
 
