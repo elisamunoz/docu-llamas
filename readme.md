@@ -1,4 +1,4 @@
-# Stitching Life.
+# Stitching Life
 
 This website is a dedicated to people that enjoy crocheting, knitting and sewing as hobby or way of life.  The purpose of the app is to aggregate different patterns and articles related to the theme. The user is able to create, read, update and delete (CRUD) entries.
 
@@ -28,7 +28,8 @@ To run the project locally, you need an Integrated development environment and h
 After installing these you need to:
 1. Download this repository clicking in ‘Clone or Dowload’ on top of this page, then click on ‘Download ZIP’ and extract the files in the folder you will be working on.
 2. Open the folder where you download the repository in your code editor
-3. Create a `.env` file containing your MongoDB credentials		`MONGO_URI='mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority'`
+3. Create a `.env` file containing your MongoDB credentials
+`MONGO_URI='mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority'`
 4. Install the required modules using this command:
 `pip -r requirements.txt`
 5. Create a new MongoDB database and name it ‘stitching’, then create these three collections:

@@ -162,14 +162,14 @@ def delete_pattern(pattern_id):
         return render_template('404.html')
 
 
-# if __name__ == '__main__':
-#     app.run(host= ("IP"),
-#     port=int(os.environ.get("PORT")),
-#     debug=False)
+if __name__ == '__main__':
+    app.run(host= ("IP"),
+    port=int(os.environ.get("PORT")),
+    debug=False)
     
-if __name__ == '__main__': #to run locally
-    app.run(
-        # host='http://127.0.0.1',
-        port=8080,
-        debug=False
-    )
+# if __name__ == '__main__': #to run locally
+#     app.run(
+#         # host='http://127.0.0.1',
+#         port=8080,
+#         debug=True
+#     )
