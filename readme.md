@@ -1,6 +1,6 @@
 # Stitching Life.
 
-This website is a dedicated to people that enjoy crocheting, knitting and sewing as hobby or way of life.  The purpose of the app is to aggregate different patterns and articles related to the theme. The user is able to create, read, update and delete (CRUD) entries.
+test This website is a dedicated to people that enjoy crocheting, knitting and sewing as hobby or way of life.  The purpose of the app is to aggregate different patterns and articles related to the theme. The user is able to create, read, update and delete (CRUD) entries.
 
 ## UX
 My goal is to create a user-friendly interactive Data-Centric development project. The color scheme was taken from the predominant colours of the picture in the Home section.
