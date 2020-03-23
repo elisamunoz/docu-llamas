@@ -44,8 +44,6 @@ def get_home():
         categories=all_categories
     )
 
-    
-
 @app.route('/get_pattern/<pattern_id>')
 def get_pattern(pattern_id):
     try:
