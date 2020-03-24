@@ -72,21 +72,21 @@ color: #2a201f;
 
 /* Home */
 
-.home {
+/* .home {
 background-color: #f0ef97;
 height: 84vh;
 }
 
 .row-home {
   height: 153vh;
-}
+} */
 
 .home-title {
   font-family: 'Sacramento', cursive;
   
 }
 
-.home-img {
+/* .home-img {
   background-image: url("../images/home_img.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -94,7 +94,7 @@ height: 84vh;
   width: 100%;
   height: 100%;
   height: 35vh;
-}
+} */
 
 /* About */
 .about {

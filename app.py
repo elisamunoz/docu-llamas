@@ -17,13 +17,6 @@ app.config['SECRET_KEY'] =  os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 @app.route('/') 
-@app.route('/get_patterns') # get_patterns from MongoDB
-def get_patterns():
-    page = request.args.get('page')
-    # all_categories = mongo.db.categories.find()
-    # return render_template("home.html", patterns=mongo.db.patterns.find(), categories=all_categories)
-    return redirect(url_for('get_home',_anchor='projects', page=page))
-
 @app.route('/home') # gets patterns from MongoDB
 def get_home():
     page = request.args.get('page', default = 1, type = int)
@@ -42,6 +35,13 @@ def get_home():
         current_page=page,
         categories=all_categories
     )
+
+@app.route('/get_patterns') # get_patterns from MongoDB
+def get_patterns():
+    page = request.args.get('page')
+    # all_categories = mongo.db.categories.find()
+    # return render_template("home.html", patterns=mongo.db.patterns.find(), categories=all_categories)
+    return redirect(url_for('get_home',_anchor='projects', page=page))
 
 @app.route('/get_pattern/<pattern_id>')
 def get_pattern(pattern_id):
@@ -159,16 +159,16 @@ def delete_pattern(pattern_id):
         return render_template('404.html')
 
 
-if __name__ == '__main__':
-    app.run(
-        host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")),
-        debug=True
-    )
-    
-# if __name__ == '__main__': #to run locally
+# if __name__ == '__main__':
 #     app.run(
-#         # host='http://127.0.0.1',
-#         port=8080,
+#         host=os.environ.get("IP"),
+#         port=int(os.environ.get("PORT")),
 #         debug=True
 #     )
+    
+if __name__ == '__main__': #to run locally
+    app.run(
+        # host='http://127.0.0.1',
+        port=8080,
+        debug=True
+    )
