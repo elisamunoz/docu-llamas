@@ -17,7 +17,6 @@ app.config['SECRET_KEY'] =  os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 @app.route('/') 
-
 @app.route('/get_patterns') # get_patterns from MongoDB
 def get_patterns():
     page = request.args.get('page')
