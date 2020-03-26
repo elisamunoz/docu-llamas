@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $(window).scroll(fixedNavBar);
+    parallaxContent();
   });
 
 function showField(id) {
@@ -71,4 +72,15 @@ function fixedNavBar() {
       $(".navbar-brand").removeClass("navbar-brand-small");
     }
   }
+
+// Parallax effect
+
+function parallaxContent() {
+  const parllax = document.querySelector(".parallax");
+
+  window.addEventListener("scroll", function() {
+    let offset = window.pageYOffset;
+    parllax.style.backgroundPositionY = offset * 0.5 + "px";
+  });
+}
 
