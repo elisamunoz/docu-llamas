@@ -36,6 +36,12 @@ def get_home():
         categories=all_categories
     )
 
+@app.route('/about') #get to about section
+def about():
+    page = request.args.get('about')
+    return redirect(url_for('get_home',_anchor='about', page=page))
+
+
 @app.route('/get_patterns') # get_patterns from MongoDB
 def get_patterns():
     page = request.args.get('page')
