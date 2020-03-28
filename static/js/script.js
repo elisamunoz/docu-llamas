@@ -31,7 +31,7 @@ function hiddeField(id) {
 //     }
 // }
 
-// Fades out and set to no required no needed elements in addpattern.html`
+// Fades out and set to no required no needed elements in addpattern.html and editpattern.html
 function fadeOutElementPattern(){
     var categorySelect = document.getElementById("category");
     var category = categorySelect.options[categorySelect.selectedIndex].value;

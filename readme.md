@@ -46,3 +46,5 @@ if __name__ == '__main__': 
 ```
 The project will run at http://127.0.0.1:5000
 
+
+Photo by Volha Flaxeco on Unsplash
