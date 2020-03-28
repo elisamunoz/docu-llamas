@@ -1,0 +1,46 @@
+@media only screen and (min-width: 768px){
+  .navbar-brand {
+    font-size: 3em;
+    padding-left: 60px;
+  }
+
+  .navbar-smaller-font {
+    font-size: 2em;
+  }
+  .section__title {
+    font-size: 5em;
+  }
+  .home__title h1 {
+    font-size: 4em;
+  }
+
+  .about-container{ 
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    max-width: 1280px;
+    margin: auto;
+  }
+  
+  .about__img {
+    max-width: 520px;
+    margin: auto;
+    } 
+  
+  .about__txt {
+    max-width: 599px;
+    padding-top: 30px;
+    }
+  
+  .about h3 {
+    padding: 0 0 20px ;
+    }
+  
+  .error__txt {
+    top: 21%
+  }
+
+  .error__txt h4{
+    font-size: 4em;
+    margin-bottom: 10px;
+  }
+  }

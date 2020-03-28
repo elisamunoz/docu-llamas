@@ -1,0 +1,48 @@
+@media (min-width: 1025px){
+
+  .home{
+      margin: 10% auto 0;
+    } 
+
+  .row-home {
+    height: 692px;
+    }
+
+  .home-img {
+    margin-top: 56px;
+    height: 74vh;
+    }
+
+  .about {
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+    }
+
+  .about__img {
+    width: 45%;
+    } 
+
+  .about__txt {
+    width: 53%;
+    text-align: left;
+    padding-top: 0;
+    }
+
+    .patterns {
+      width: 60%;
+    }
+
+    #add-edit-pattern.site-content {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .error__txt {
+      top: 25%;
+      text-align: right;
+    }
+
+    .error__txt h4{
+      font-size: 3em;
+    } 
+  }

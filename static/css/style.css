@@ -29,7 +29,7 @@ text-align: justify;
 
 .section__title {
   text-align: center;
-  font-size: 5em;
+  font-size: 3em;
   margin: 0;
   padding-top: 70px;
   padding-bottom: 30px;
@@ -65,8 +65,7 @@ position: fixed;
   font-size: 1.3em;
 }
 
-.fixed {
-/* transition: background-color 1s ease 1s; */
+.navbar-small {
 min-height: 60px;
 }
 
@@ -341,90 +340,4 @@ footer {
 .fab:hover {
   font-weight: 700;
   color: #2a201f;
-}
-
-
-@media only screen and (min-width: 768px){
-  .navbar-brand {
-    font-size: 3em;
-    padding-left: 60px;
-  }
-
-  .home__title h1 {
-    font-size: 4em;
-  }
-
-  .about-container{ 
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    max-width: 1280px;
-    margin: auto;
-  }
-
-.about__img {
-  max-width: 520px;
-  margin: auto;
-  } 
-
-.about__txt {
-  max-width: 599px;
-  padding-top: 30px;
-  }
-
-.about h3 {
-  padding: 0 0 20px ;
-  }
-
-  .error__txt {
-    top: 21%
-  }
-
-  .error__txt h4{
-    font-size: 4em;
-    margin-bottom: 10px;
-  }
-}
-
-@media (min-width: 1025px){
-
-.home{
-  padding-top: 100px;
-  } 
-
-.row-home {
-  height: 692px;
-  }
-
-.home-img {
-  margin-top: 56px;
-  height: 74vh;
-  }
-
-.about {
-  padding-left: 2.75rem;
-  padding-right: 2.75rem;
-  }
-
-.about__img {
-  width: 45%;
-  } 
-
-.about__txt {
-  width: 53%;
-  text-align: left;
-  padding-top: 0;
-  }
-
-  .patterns {
-    width: 60%;
-  }
-
-  .error__txt {
-    top: 25%;
-    text-align: right;
-  }
-
-  .error__txt h4{
-    font-size: 3em;
-  } 
 }
