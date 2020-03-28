@@ -1,139 +1,143 @@
 {% extends 'base.html' %} 
 {% block pageId %}add-edit-pattern{% endblock %}
-
 {% block content %}
-
-{% if isNew==True %}
-  <h3 class="section__title">Add a Project/Article</h3>
-{% else %}
-  <h3 class="section__title">Edit a Project/Article</h3>
-{% endif %}
-
-<div class="container">
-  {% if isNew==True %}
-    <form action="{{url_for('insert_pattern')}}" class="row" method="POST">
-  {% else %}
-    <form action="{{url_for('update_pattern', pattern_id=id)}}" class="row" method="POST">
-  {% endif %}
-      <!-- Category name -->
-      <div class="form-group col-md-6">
-          <p>
-            {{ form.category_name.label }}<br>
-            {{ form.category_name(class="form-control", id="category", onchange="fadeOutElementPattern()") }}
-          </p>       
-      </div>
-
-      <!-- Language -->
-      <div class="form-group col-md-6">
-        <p>
-          {{ form.pattern_language.label }}<br>
-          {{ form.pattern_language(class="form-control") }}
-        </p>
-      </div>
-
-      <!-- Name -->
-      <div class="form-group col-md-6">
-          <p>
-            {{ form.pattern_name.label }}<br>
-            {{ form.pattern_name(class="form-control") }}
-          </p>
-      </div>
-
-      <!-- pattern by -->
-      <div class="form-group col-md-6">
-          <p>
-            {{ form.pattern_by.label }}<br>
-            {{ form.pattern_by(class="form-control") }}
-          </p>
-      </div>
-
-      <!-- Crochet/Needle size -->
-      <div id="needle_size" class="form-group col-md-6">
-          <p>
-            {{ form.pattern_needle_size.label }}<br>
-            {{ form.pattern_needle_size(class="form-control") }}
-          </p>
-      </div>
-      
-      <!-- Gauge -->
-      <div id="gauge" class="form-group col-md-6">
-          <p>
-            {{ form.pattern_gauge.label }}<br>
-            {{ form.pattern_gauge(class="form-control") }}
-          </p>
-      </div>
-
-      <!-- Yarn weigth/Fabric type -->
-      <div id="yarn_weight" class="form-group col-md-6">
-          <p>
-            {{ form.pattern_yarn_weight.label }}<br>
-            {{ form.pattern_yarn_weight(class="form-control") }}
-          </p>
-      </div>
-
-      <!-- How much do you need? -->
-      <div id="yardage" class="form-group col-md-6">
-          <p>
-            {{ form.pattern_yardage.label }}<br>
-            {{ form.pattern_yardage(class="form-control") }}
-          </p>
-      </div>
-
-      <!-- Pattern size -->
-      <div id="size" class="form-group col-md-6">
-          <p>
-            {{ form.pattern_size.label }}<br>
-            {{ form.pattern_size(class="form-control") }}
-          </p>
-      </div>
-
-      <!-- Difficulty -->
-      <div id="difficulty" class="form-group col-md-6">
-          <p>
-            {{ form.pattern_difficulty.label }}<br>
-            {{ form.pattern_difficulty(class="form-control") }}
-          </p>
-          
-
-      </div>
-
-      <!-- url -->
-      <div class="form-group col-md-6">
-          <p>
-            {{ form.pattern_url.label }}<br>
-            {{ form.pattern_url(class="form-control") }}
-          </p>
-      </div>
-
-      <!-- Image -->
-      <div class="form-group col-md-6">
-          <p>
-            {{ form.pattern_img.label }}<br>
-            {{ form.pattern_img(class="form-control") }}
-          </p>
-      </div>
-
-      <!-- Notes -->
-      <div class="form-group col-12">
-          <p>
-            {{ form.pattern_notes.label }}<br>
-            {{ form.pattern_notes(rows="5", class="form-control") }}
-          </p>
-      </div>
-      <!-- Form buttons -->
-      <div class="buttons">
+<div class="add-edit-pattern background-image">
+  <div class="transparent-overlay">
+    <div class="add-edit-pattern__form">
       {% if isNew==True %}
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-danger">Add Project</button>
+        <h3 class="section__title">Add a Project/Article</h3>
       {% else %}
-        <!-- Update, Cancel and Delete buttons -->
-        <button type="submit" class="btn btn-danger">Update</button>
-        <a href="{{url_for('get_pattern', pattern_id=id)}}" class="btn btn-danger">Cancel</a>
-        <a href="{{url_for('delete_pattern', pattern_id=id)}}" class="btn btn-danger">Delete</a>
-      {% endif %}  
-    </div>  
-  </form>
-</div>
+        <h3 class="section__title">Edit a Project/Article</h3>
+      {% endif %}
+
+      <div class="container">
+        {% if isNew==True %}
+          <form action="{{url_for('insert_pattern')}}" class="row" method="POST">
+        {% else %}
+          <form action="{{url_for('update_pattern', pattern_id=id)}}" class="row" method="POST">
+        {% endif %}
+            <!-- Category name -->
+            <div class="form-group col-md-6">
+                <p>
+                  {{ form.category_name.label }}<br>
+                  {{ form.category_name(class="form-control", id="category", onchange="fadeOutElementPattern()") }}
+                </p>       
+            </div>
+
+            <!-- Language -->
+            <div class="form-group col-md-6">
+              <p>
+                {{ form.pattern_language.label }}<br>
+                {{ form.pattern_language(class="form-control") }}
+              </p>
+            </div>
+
+            <!-- Name -->
+            <div class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_name.label }}<br>
+                  {{ form.pattern_name(class="form-control") }}
+                </p>
+            </div>
+
+            <!-- pattern by -->
+            <div class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_by.label }}<br>
+                  {{ form.pattern_by(class="form-control") }}
+                </p>
+            </div>
+
+            <!-- Crochet/Needle size -->
+            <div id="needle_size" class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_needle_size.label }}<br>
+                  {{ form.pattern_needle_size(class="form-control") }}
+                </p>
+            </div>
+            
+            <!-- Gauge -->
+            <div id="gauge" class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_gauge.label }}<br>
+                  {{ form.pattern_gauge(class="form-control") }}
+                </p>
+            </div>
+
+            <!-- Yarn weigth/Fabric type -->
+            <div id="yarn_weight" class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_yarn_weight.label }}<br>
+                  {{ form.pattern_yarn_weight(class="form-control") }}
+                </p>
+            </div>
+
+            <!-- How much do you need? -->
+            <div id="yardage" class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_yardage.label }}<br>
+                  {{ form.pattern_yardage(class="form-control") }}
+                </p>
+            </div>
+
+            <!-- Pattern size -->
+            <div id="size" class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_size.label }}<br>
+                  {{ form.pattern_size(class="form-control") }}
+                </p>
+            </div>
+
+            <!-- Difficulty -->
+            <div id="difficulty" class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_difficulty.label }}<br>
+                  {{ form.pattern_difficulty(class="form-control") }}
+                </p>
+                
+
+            </div>
+
+            <!-- url -->
+            <div class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_url.label }}<br>
+                  {{ form.pattern_url(class="form-control") }}
+                </p>
+            </div>
+
+            <!-- Image -->
+            <div class="form-group col-md-6">
+                <p>
+                  {{ form.pattern_img.label }}<br>
+                  {{ form.pattern_img(class="form-control") }}
+                </p>
+            </div>
+
+            <!-- Notes -->
+            <div class="form-group col-12">
+                <p>
+                  {{ form.pattern_notes.label }}<br>
+                  {{ form.pattern_notes(rows="5", class="form-control") }}
+                </p>
+            </div>
+            <!-- Form buttons -->
+            <div class="buttons">
+            {% if isNew==True %}
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-danger">Add Project</button>
+            {% else %}
+              <!-- Update, Cancel and Delete buttons -->
+              <button type="submit" class="btn btn-danger">Update</button>
+              <a href="{{url_for('get_pattern', pattern_id=id)}}" class="btn btn-danger">Cancel</a>
+              <a href="{{url_for('delete_pattern', pattern_id=id)}}" class="btn btn-danger">Delete</a>
+            {% endif %}  
+          </div>  
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
   
 
 

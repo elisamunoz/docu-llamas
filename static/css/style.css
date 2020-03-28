@@ -27,6 +27,16 @@ text-align: justify;
   background-attachment: fixed;
 }
 
+.transparent-overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.6);
+  background-attachment: fixed;
+}
+
 .section__title {
   text-align: center;
   font-size: 3em;
@@ -280,12 +290,23 @@ text-decoration: none;
 
 
 /* Add/Edit Pattern */
+.add-edit-pattern {
+  background-image: url("../images/add_edit_pattern.jpg");
+}
+
+.add-edit-pattern__form {
+  padding-bottom: 60px;
+}
 
 .buttons {
   width: 100%;
   text-align: right;
   padding-right: 15px;
   padding-top: 20px;
+}
+
+#add-edit-pattern.site-content {
+  padding-bottom: 0;
 }
 
 /* Errors */
