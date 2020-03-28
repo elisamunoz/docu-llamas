@@ -65,11 +65,13 @@ function fadeOutElementPattern(){
 
 function fixedNavBar() {
     if ($(this).scrollTop() > 200) {
-      $(".navbar").addClass("fixed");
+      $(".navbar").addClass("navbar-small");
       $(".navbar-brand").addClass("navbar-brand-small");
+      $(".navbar-brand").addClass("navbar-smaller-font");
     } else {
-      $(".navbar").removeClass("fixed");
+      $(".navbar").removeClass("navbar-small");
       $(".navbar-brand").removeClass("navbar-brand-small");
+      $(".navbar-brand").removeClass("navbar-smaller-font");
     }
   }
 
