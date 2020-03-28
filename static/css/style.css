@@ -290,6 +290,10 @@ text-decoration: none;
   width: 75%;
 }
 
+.error__txt h4 {
+  margin-bottom: 15px;
+}
+
 .error__img {
   transform: scaleX(-1);
   height: calc(100vh - 95px);
@@ -348,9 +352,18 @@ footer {
 .about h3 {
   padding: 0 0 20px ;
   }
+
+  .error__txt {
+    top: 21%
+  }
+
+  .error__txt h4{
+    font-size: 4em;
+    margin-bottom: 10px;
+  }
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1025px){
 
 .home{
   padding-top: 100px;
@@ -380,7 +393,16 @@ footer {
   padding-top: 0;
   }
 
-.patterns {
-  width: 60%;
+  .patterns {
+    width: 60%;
   }
+
+  .error__txt {
+    top: 25%;
+    text-align: right;
+  }
+
+  .error__txt h4{
+    font-size: 3em;
+  } 
 }
