@@ -93,10 +93,28 @@ color: #2a201f;
   background-size: cover;
   background-position: center;
 }
+.home {
+  text-align: center;
+  margin: 50% auto 0;
+  position: absolute;
+  right: 0;
+  left: 0;
+  max-width: 95%;
+}
 
-.home__title {
+.jumbotron {
+  background-color: #ffffff00;
+  color: #f7f7f7;
+}
+
+.home__title h1 {
+  margin: auto;
   font-family: 'Sacramento', cursive;
-  
+  font-size: 3.6em;
+}
+
+.home__title p {
+  padding: 0 60px;
 }
 
 /* About */
@@ -332,7 +350,11 @@ footer {
     padding-left: 60px;
   }
 
-.about-container{ 
+  .home__title h1 {
+    font-size: 4em;
+  }
+
+  .about-container{ 
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     max-width: 1280px;
