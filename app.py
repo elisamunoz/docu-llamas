@@ -27,7 +27,7 @@ def get_home():
     total_patterns = mongo.db.patterns.estimated_document_count() 
     total_pages = int(math.ceil(total_patterns / patterns_per_page))
    
-    patterns = mongo.db.patterns.find().skip(skip).limit(patterns_per_page)
+    patterns = mongo.db.patterns.find().sort("_id", -1 ).skip(skip).limit(patterns_per_page)
     return render_template(
         "home.html",
         patterns=patterns,
@@ -45,8 +45,6 @@ def about():
 @app.route('/get_patterns') # get_patterns from MongoDB
 def get_patterns():
     page = request.args.get('page')
-    # all_categories = mongo.db.categories.find()
-    # return render_template("home.html", patterns=mongo.db.patterns.find(), categories=all_categories)
     return redirect(url_for('get_home',_anchor='projects', page=page))
 
 @app.route('/get_pattern/<pattern_id>')
@@ -116,21 +114,7 @@ def edit_pattern(pattern_id):
 
     except Exception as e:
         return render_template('404.html')
-    # try:
-    #     the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
-
-    #     all_categories = mongo.db.categories.find()
-    #     all_difficulty = mongo.db.difficulty.find()
-    #     return render_template(
-    #         'editpattern.html',
-    #         pattern=the_pattern,
-    #         categories=all_categories,
-    #         difficulty=all_difficulty
-    #     )
-    # except Exception as e:
-    #     return render_template('404.html')
-    
-
+ 
 @app.route('/update_pattern/<pattern_id>', methods=["POST"])
 def update_pattern(pattern_id):
     try:
