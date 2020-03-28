@@ -57,8 +57,7 @@ position: fixed;
 .navbar-brand {
   font-family: 'Sacramento', cursive;
   padding: 0;
-  font-size: 3em;
-  padding-left: 60px;
+  font-size: 2.7em;
 }
 
 .navbar-nav {
@@ -282,7 +281,13 @@ text-decoration: none;
 }
 
 .error__txt {
-
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 30%;
+  width: 75%;
 }
 
 .error__img {
@@ -318,6 +323,10 @@ footer {
 
 
 @media only screen and (min-width: 768px){
+  .navbar-brand {
+    font-size: 3em;
+    padding-left: 60px;
+  }
 
 .about-container{ 
     padding-left: 1.25rem;
