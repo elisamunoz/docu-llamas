@@ -3,33 +3,36 @@ $(document).ready(function() {
     parallaxContent();
   });
 
-function showField(id) {
-    const fieldWrapper = $("#" + id);
-    const field = $("#pattern_" + id);
 
-    fieldWrapper.fadeIn(1000);
-    field.attr("required", true);
+// Navbar to fixed
+
+function fixedNavBar() {
+  if ($(this).scrollTop() > 200) {
+    $(".navbar").addClass("navbar-small");
+    $(".navbar-brand").addClass("navbar-brand-small");
+    $(".navbar-brand").addClass("navbar-smaller-font");
+  } else {
+    $(".navbar").removeClass("navbar-small");
+    $(".navbar-brand").removeClass("navbar-brand-small");
+    $(".navbar-brand").removeClass("navbar-smaller-font");
+  }
 }
-function hiddeField(id) {
-    const fieldWrapper = $("#" + id);
-    const field = $("#pattern_" + id);
 
-    fieldWrapper.fadeOut(1000);
-    field.attr("required", false);
+
+// Parallax effect
+
+function parallaxContent() {
+  const parllax = document.querySelector(".parallax");
+
+  window.addEventListener("scroll", function() {
+    let offset = window.pageYOffset;
+
+    if(!!parllax) {
+      parllax.style.backgroundPositionY = offset * 0.5 + "px";
+    }
+  });
 }
 
-// function filterCardsByCategory() {
-//     var cardsList = document.getElementById("cards");
-//     var categorySelect = document.getElementById("category");
-//     var category = categorySelect.options[categorySelect.selectedIndex].value;
-    
-//     if(category === '') {
-//         $(cardsList).find('.card_wrapper').fadeIn(0);
-//     } else {
-//         $(cardsList).find('.card_wrapper').fadeOut(0);
-//         $(cardsList).find(`.card_wrapper[data-category='${category}']`).fadeIn(1000);
-//     }
-// }
 
 // Fades out and set to no required no needed elements in addpattern.html and editpattern.html
 function fadeOutElementPattern(){
@@ -61,28 +64,27 @@ function fadeOutElementPattern(){
     }
 };
 
-// Navbar to fixed
 
-function fixedNavBar() {
-    if ($(this).scrollTop() > 200) {
-      $(".navbar").addClass("navbar-small");
-      $(".navbar-brand").addClass("navbar-brand-small");
-      $(".navbar-brand").addClass("navbar-smaller-font");
-    } else {
-      $(".navbar").removeClass("navbar-small");
-      $(".navbar-brand").removeClass("navbar-brand-small");
-      $(".navbar-brand").removeClass("navbar-smaller-font");
-    }
-  }
+// Shows required fields used in Add-EditPattern page
 
-// Parallax effect
+function showField(id) {
+  const fieldWrapper = $("#" + id);
+  const field = $("#pattern_" + id);
 
-function parallaxContent() {
-  const parllax = document.querySelector(".parallax");
-
-  window.addEventListener("scroll", function() {
-    let offset = window.pageYOffset;
-    parllax.style.backgroundPositionY = offset * 0.5 + "px";
-  });
+  fieldWrapper.fadeIn(1000);
+  field.attr("required", true);
 }
+
+// Hides required fields used in Add-EditPattern page
+
+function hiddeField(id) {
+  const fieldWrapper = $("#" + id);
+  const field = $("#pattern_" + id);
+
+  fieldWrapper.fadeOut(1000);
+  field.attr("required", false);
+}
+
+
+
 
