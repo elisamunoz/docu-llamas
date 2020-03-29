@@ -1,3 +1,16 @@
+:root {
+  --color-main: #ff8093;
+  --color-main-light: #ffdcdd;
+}
+/*   
+  #352523;
+  #f7f7f7;
+  #ff8093;
+  #ffdcdd;
+  rgba(255, 220, 221, 0.56); form */ 
+
+
+
 /** General paddings, margins, styles **/
 *,
 a:hover {
@@ -9,6 +22,7 @@ html {
 height: 100%;
 font-family: 'Lato', sans-serif;
 text-align: justify;
+color: #352523;
 }
 
 .site-content {
@@ -16,8 +30,15 @@ text-align: justify;
   min-height: calc(100vh - 40px);
 }
 
+a {
+  color: #352523;
+}
+
+a:hover {
+  color: var(--color-main);
+}
+
 .background-image {
-  min-height: calc(100vh - 140px);
   width: 100%;
   display: block;
   background-size: cover;
@@ -33,7 +54,7 @@ text-align: justify;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   background-attachment: fixed;
 }
 
@@ -42,7 +63,7 @@ text-align: justify;
   font-size: 3em;
   margin: 0;
   padding-top: 70px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   font-family: 'Sacramento', cursive;
 }
 
@@ -70,9 +91,12 @@ position: fixed;
   font-size: 2.7em;
 }
 
+.navbar-light .navbar-toggler {
+  border-color: #f7f7f7;
+}
+
 .navbar-nav {
   margin-left: auto;
-  font-size: 1.3em;
 }
 
 .navbar-small {
@@ -83,13 +107,12 @@ min-height: 60px;
   font-size: 2em;
 }
 
-.nav-link {
+.navbar-light .navbar-nav .nav-link {
 color: #352523;
 }
 
-.nav-link:hover {
-font-weight: 700;
-color: #2a201f;
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+color: var(--color-main);
 }
 
 /* Home */
@@ -128,7 +151,7 @@ color: #2a201f;
 
 /* About */
 .about {
-  background-color: thistle;
+  background-color:#ffdcdd;
 }
 
 .about-row {
@@ -163,19 +186,8 @@ color: #2a201f;
 }
 
 /* Patterns in main page */
-
-.projects__search-by {
-  padding: 30px 0;
-  text-align: center;
-}
-
-.projects__search-by__search{
-  padding-bottom: 30px;
-} 
-
-.projects__search-by__form  {
- margin: auto;
- width: 60%;
+.projects {
+  background-color: #ffdcdd1c;
 }
 
 .card{
@@ -183,6 +195,7 @@ color: #2a201f;
   margin: 10px auto;
   max-width: 600px;
   border: none;
+  background-color: #ffdcdd00;
 }
 
 .card__img {
@@ -251,6 +264,34 @@ bottom: 20px;
 text-decoration: none;
 }
 
+.patterns {
+  background-color: #ffdcdd1c;
+}
+
+/* Pagination */
+.nav-center {
+  margin: auto;
+}
+
+.page-link {
+  color: var(--color-main);
+}
+
+.page-item.active .page-link {
+  background-color: var(--color-main);
+  border-color: var(--color-main);
+}
+
+.page-link:hover {
+  color:  #352523;
+  background-color:  #f7f7f7;
+  border-color:  #f7f7f7;
+}
+
+.page-link:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 220, 221, 0.56)
+}
+
 /* Get pattern*/
 
 .patterns {
@@ -274,28 +315,29 @@ text-decoration: none;
     margin: 12px;
   }
 
-.patterns__txt{
-  font-size: 1.3rem;
-}
-
 .fa-circle { 
-  color: #f16fd5;
+  color: var(--color-main);
   padding: 2px;
-}
-
-/* Pagination */
-.nav-center {
-  margin: auto;
 }
 
 
 /* Add/Edit Pattern */
+#add-edit-pattern.site-content {
+  padding-bottom: 0;
+}
+
 .add-edit-pattern {
   background-image: url("../images/add_edit_pattern.jpg");
+  min-height: calc(100vh - 140px);
 }
 
 .add-edit-pattern__form {
   padding-bottom: 60px;
+}
+
+.form-control:focus {
+  border-color: #ffdcdd;
+  box-shadow: 0 0 0 0.2rem rgba(255, 220, 221, 0.56);
 }
 
 .buttons {
@@ -305,8 +347,20 @@ text-decoration: none;
   padding-top: 20px;
 }
 
-#add-edit-pattern.site-content {
-  padding-bottom: 0;
+.btn-danger {
+  color: #f7f7f7;
+  background-color:  var(--color-main);
+  border-color:  var(--color-main);
+}
+
+.btn-danger:hover {
+  color: #f7f7f7;
+  background-color: #352523;
+  border-color: #352523;
+}
+
+danger:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 220, 221, 0.56);
 }
 
 /* Errors */
@@ -316,6 +370,7 @@ text-decoration: none;
 
 .error-page {
   background-image: url("../images/error_img.jpg");
+  min-height: calc(100vh - 40px);
 }
 
 .error__txt {
@@ -330,11 +385,6 @@ text-decoration: none;
 
 .error__txt h4 {
   margin-bottom: 15px;
-}
-
-.error__img {
-  transform: scaleX(-1);
-  height: calc(100vh - 95px);
 }
 
 
@@ -360,5 +410,5 @@ footer {
 
 .fab:hover {
   font-weight: 700;
-  color: #2a201f;
+  color: var(--color-main);
 }

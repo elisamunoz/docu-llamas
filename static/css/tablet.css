@@ -8,10 +8,16 @@
     font-size: 2em;
   }
   .section__title {
-    font-size: 5em;
+    font-size: 3.5em;
   }
   .home__title h1 {
-    font-size: 4em;
+    font-size: 5em;
+  }
+
+  .home__title p {
+    font-size: 1.5em;
+    max-width: 450px;
+    margin: auto;
   }
 
   .about-container{ 
