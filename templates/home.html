@@ -34,15 +34,14 @@
   <!-- Patterns -->
   <section id="projects" class="projects">
       <div class="container">
-        <h1 class="section__title">Projects</h1>
+        <h1 class="section__title">Patterns</h1>
                     
           <!-- card -->
         <div id="cards" class="row">
           {% for pattern in patterns %}
           <div class="wrapper card_wrapper col-12 col-md-6 col-xl-4" data-category="{{pattern.category_name}}">
             <article class="card">
-              <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" ><div class="card__img" style="background-image: url({{pattern.pattern_img}})"></div>
-              </a>  
+              <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" ><div class="card__img" style="background-image: url({{pattern.pattern_img}})"></div></a>  
                   <div class="card__body">
                       <div class="card__body__header">
                           {% if pattern.category_name == 'knitting' %}
@@ -61,11 +60,9 @@
                       </div>
                       <div class="card__body__txt">
                         {% if (pattern.category_name == 'knitting' or pattern.category_name == 'crochet' or pattern.category_name == 'sewing') %}
-                          <!-- <p>Pattern size: {{pattern.pattern_size}}</p> -->
                           <p>Difficulty: {% include 'difficulty.html' %}</p>
                         {% endif %}
-                          <!-- <p>Language: {{pattern.pattern_language}}</p>
-                      </div> -->
+                      </div>
                   </div>
             </article>
           </div>
