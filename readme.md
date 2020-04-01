@@ -105,6 +105,7 @@ The application can be deploying using Heroku. Before, you need to:
 * Create a new app at the Heroku dashboard.
 * Link the app in Heroku to your GitHub respository
 * Go to settings then to Reveal Config Vars and set to this:
+
 KEY | VALUE 
 ---------- | ------------------------------------------------------------------------------------------------------------------
 IP | 0.0.0.0 
