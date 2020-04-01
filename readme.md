@@ -105,13 +105,13 @@ The application can be deploying using Heroku. Before, you need to:
 * Create a new app at the Heroku dashboard.
 * Link the app in Heroku to your GitHub respository
 * Go to settings then to Reveal Config Vars and set to this:
-| KEY        | VALUE                                                                                                              |
-| ---------- | ------------------------------------------------------------------------------------------------------------------ |
-| IP         | 0.0.0.0                                                                                                            |
-| PORT       | 5000                                                                                                               |
-| MONGO_URI  | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority` |
-| SECRET_KEY | `<your_secret_key>`                                                                                                |
-| DEBUG      | FALSE                                                                                                              |
+KEY | VALUE 
+---------- | ------------------------------------------------------------------------------------------------------------------
+IP | 0.0.0.0 
+PORT       | 5000  
+MONGO_URI  | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority` 
+SECRET_KEY | `<your_secret_key>`
+DEBUG      | FALSE
 
 MONGO URI AND SECRET_KEY should match the key and values from your .env file
 Set host and Port to the following in your app.py file
