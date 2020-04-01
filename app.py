@@ -47,7 +47,7 @@ def get_patterns():
     page = request.args.get('page')
     return redirect(url_for('get_home',_anchor='projects', page=page))
 
-@app.route('/get_pattern/<pattern_id>')
+@app.route('/get_pattern/<pattern_id>') # gets to one pattern in particular
 def get_pattern(pattern_id):
     try:
         the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
@@ -67,7 +67,7 @@ def patternForm():
 
     return form
 
-@app.route('/add_pattern')
+@app.route('/add_pattern') # Add pattern site
 def add_pattern():
     form = patternForm()
 
@@ -77,13 +77,13 @@ def add_pattern():
         isNew=True
     )
 
-@app.route('/insert_pattern', methods=['POST'])
+@app.route('/insert_pattern', methods=['POST']) # Insert pattern to MongoDB
 def insert_pattern():
     patterns = mongo.db.patterns
     patterns.insert_one(request.form.to_dict())
     return redirect(url_for('get_patterns'))
 
-@app.route('/edit_pattern/<pattern_id>')
+@app.route('/edit_pattern/<pattern_id>') # Edit pattern site
 def edit_pattern(pattern_id):
     try:
         the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
@@ -115,7 +115,7 @@ def edit_pattern(pattern_id):
     except Exception as e:
         return render_template('404.html')
  
-@app.route('/update_pattern/<pattern_id>', methods=["POST"])
+@app.route('/update_pattern/<pattern_id>', methods=["POST"]) # Update pattern in MongoDB
 def update_pattern(pattern_id):
     try:
         patterns = mongo.db.patterns
@@ -140,7 +140,7 @@ def update_pattern(pattern_id):
         return render_template('404.html')
 
 
-@app.route('/delete_pattern/<pattern_id>')
+@app.route('/delete_pattern/<pattern_id>') # Delete pattern in Mongo DB
 def delete_pattern(pattern_id):
     try:
         mongo.db.patterns.remove({'_id': ObjectId(pattern_id)})
@@ -149,16 +149,16 @@ def delete_pattern(pattern_id):
         return render_template('404.html')
 
 
-# if __name__ == '__main__':
-#     app.run(
-#         host=os.environ.get("IP"),
-#         port=int(os.environ.get("PORT")),
-#         debug=False
-#     )
-    
-if __name__ == '__main__': #to run locally
+if __name__ == '__main__':
     app.run(
-        # host='http://127.0.0.1',
-        port=8080,
-        debug=True
+        host=os.environ.get("IP"),
+        port=int(os.environ.get("PORT")),
+        debug=False
     )
+    
+# if __name__ == '__main__': #to run locally
+#     app.run(
+#         # host='http://127.0.0.1',
+#         port=8080,
+#         debug=True
+#     )
