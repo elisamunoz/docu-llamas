@@ -156,9 +156,3 @@ if __name__ == '__main__':
         debug=True
     )
     
-# if __name__ == '__main__': #to run locally
-#     app.run(
-#         # host='http://127.0.0.1',
-#         port=8080,
-#         debug=True
-#     )
