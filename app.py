@@ -151,9 +151,9 @@ def delete_pattern(pattern_id):
 
 if __name__ == '__main__':
     app.run(
-        host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")),
-        debug=False
+        host=os.environ.get("IP") or '',
+        port=int(os.environ.get("PORT") or 8080),
+        debug=True
     )
     
 # if __name__ == '__main__': #to run locally
