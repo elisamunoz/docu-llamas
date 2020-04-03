@@ -15,10 +15,10 @@ a:hover {
 
 body,
 html {
-height: 100%;
-font-family: 'Lato', sans-serif;
-text-align: justify;
-color: var(--color-text);
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  text-align: justify;
+  color: var(--color-text);
 }
 
 .site-content {
@@ -109,7 +109,8 @@ min-height: 60px;
 color: var(--color-text);
 }
 
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
 color: var(--color-main);
 }
 
@@ -233,20 +234,20 @@ color: var(--color-main);
 }
 
 .card__body__header__title{
-line-height: 1.5;
-margin: 0 0 10px;
-font-size: 1.2em;
-text-transform: capitalize;
-text-overflow: ellipsis;
-white-space: nowrap;
-overflow: hidden;
+  line-height: 1.5;
+  margin: 0 0 10px;
+  font-size: 1.2em;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card__body__txt {
-line-height: 1.2;
-font-size: 1em;
-max-height: 96px;
-padding-top: 3px;
+  line-height: 1.2;
+  font-size: 1em;
+  max-height: 96px;
+  padding-top: 3px;
 }
 
 .card__body__txt p {
@@ -254,10 +255,10 @@ padding-top: 3px;
 }
 
 .card__link{
-position: absolute;
-right: 24px;
-bottom: 20px;
-text-decoration: none;
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  text-decoration: none;
 }
 
 /* Pagination */
@@ -301,11 +302,11 @@ text-decoration: none;
   background-size: cover;
   background-position: center center;
   height: 60vh;
-  }
+}
 
 .patterns__txt {
-    margin: 12px;
-  }
+  margin: 12px;
+}
 
 .fa-circle { 
   color: var(--color-main);
@@ -351,7 +352,7 @@ text-decoration: none;
   border-color: var(--color-text);
 }
 
-danger:focus {
+.btn-danger:focus {
   box-shadow: 0 0 0 0.2rem var(--color-form-border);
 }
 

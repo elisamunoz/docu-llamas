@@ -2,8 +2,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired
 
+
 class UpdateForm(FlaskForm):
-    category_name = SelectField('Category', choices=[])
+    category_name = SelectField('Category', validators=[DataRequired()], choices=[])
     pattern_language = StringField('Language', validators=[DataRequired()])
     pattern_name = StringField('Pattern/Article Name', validators=[DataRequired()])
     pattern_by = StringField('Pattern/Article by', validators=[DataRequired()])
@@ -17,3 +18,13 @@ class UpdateForm(FlaskForm):
     pattern_img = StringField('Pattern/Article image (url)', validators=[DataRequired()])
     pattern_notes = TextAreaField('Note', validators=[DataRequired()])
     submit = SubmitField('Add Pattern')
+
+    def __init__(self, db, *args, **kwargs):
+        super(UpdateForm, self).__init__(*args, **kwargs)
+
+        all_categories = db.categories.find()
+        all_difficulty = db.difficulty.find()
+
+        self.category_name.choices = [("", " ")] + [(cat['category_name'], cat['category_name']) for cat in all_categories]
+        self.pattern_difficulty.choices = [("", " ")] + [(diff['pattern_difficulty'], diff['pattern_difficulty']) for diff
+                                                         in all_difficulty]
