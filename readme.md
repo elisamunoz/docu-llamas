@@ -44,7 +44,7 @@ This page is to tell the user that the link she or he wants to visit is not avai
 
 ### 
 * HTML
-* CSS
+* CSS (BEM naming convention, CSS variables)
 * Javascript
 * JQuery
 * Python
@@ -86,14 +86,7 @@ After installing these you need to:
 * patterns	
 * pattern_category			
 * categories
-5. Set port to the following in the app.py file:	
-```
-if __name__ == '__main__': 		
-    app.run(
-        port=8080,
-        debug=True	
-    )
-```
+
 You can run the app by running: `python app.py`
 The project will run at `http://127.0.0.1:5000`
 
@@ -115,15 +108,7 @@ SECRET_KEY | `<your_secret_key>`
 DEBUG | FALSE
 
 MONGO URI AND SECRET_KEY should match the key and values from your .env file
-Set host and Port to the following in your app.py file
-```
-if __name__ == '__main__':
-    app.run(
-        host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")),
-        debug=False
-    )
-```
+
 * Push your code to GithHub and Heroku
 * Your app will be hosted at `http://<your_app_name>.herokuapp.com/`
 
