@@ -4,7 +4,7 @@
     <div class="patterns-container">
         <h1 class="section__title">{{pattern.pattern_name}}</h1>
         <h5 class="section__sub-title">by {{pattern.pattern_by}}</h5>
-        <div class="pattern__img" style="background-image: url({{pattern.pattern_img}})"></div>
+        <div class="pattern__img" style="background-image: url({{pattern.pattern_img}}) , url('../static/images/default_pattern.jpg');"></div>
         <div class="patterns__txt">
             <p><strong>Category:&emsp;</strong> {{pattern.category_name}}</p>
             {% if (pattern.category_name == 'knitting' or pattern.category_name == 'crochet' or pattern.category_name == 'sewing') %}
