@@ -6,6 +6,7 @@ if os.path.exists("env.py"):
     import env
 import math
 from forms import UpdateForm
+from utils import coll_categories, coll_patterns, pattern, pattern_count
 
 
 
@@ -17,7 +18,6 @@ app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
 @app.route('/')
 @app.route('/home')  # gets patterns from MongoDB
 def get_home():
@@ -25,11 +25,11 @@ def get_home():
     patterns_per_page = 6
     skip = (page - 1) * patterns_per_page
 
-    all_categories = mongo.db.categories.find()
-    total_patterns = mongo.db.patterns.estimated_document_count()
+    all_categories = coll_categories(mongo.db)
+    total_patterns = pattern_count(mongo.db)
     total_pages = int(math.ceil(total_patterns / patterns_per_page))
 
-    patterns = mongo.db.patterns.find().sort(
+    patterns = coll_patterns(mongo.db).sort(
         "_id", -1).skip(skip).limit(patterns_per_page)
     return render_template(
         "home.html",
@@ -55,8 +55,8 @@ def get_patterns():
 @app.route('/get_pattern/<pattern_id>')  # gets to one pattern in particular
 def get_pattern(pattern_id):
     try:
-        the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
-        all_categories = mongo.db.categories.find()
+        the_pattern = pattern(mongo.db, pattern_id)
+        all_categories = coll_categories(mongo.db)
         return render_template('getpattern.html', pattern=the_pattern, categories=all_categories)
 
     except Exception:
@@ -76,15 +76,36 @@ def add_pattern():
 
 @app.route('/insert_pattern', methods=['POST'])  # Insert pattern to MongoDB
 def insert_pattern():
-    patterns = mongo.db.patterns
-    patterns.insert_one(request.form.to_dict())
-    return redirect(url_for('get_patterns'))
+    UpdateForm(mongo.db)
+    UpdateForm(mongo.db, data=request.form.to_dict())
+
+    form = UpdateForm(mongo.db, data=request.form.to_dict())
+    is_valid: bool = form.validate()
+
+    # if is_valid:
+    #     return redirect(url_for('get_home'))
+    # else:
+    #     patterns = mongo.db.patterns
+    #     patterns.insert_one(request.form.to_dict())
+    #     return redirect(url_for('about'))
+    
+
+    if is_valid:
+        patterns = mongo.db.patterns
+        patterns.insert_one(request.form.to_dict())
+        return redirect(url_for('get_patterns'))
+    else:
+        return redirect(url_for('add_pattern'))
+
+    # patterns = mongo.db.patterns
+    # patterns.insert_one(request.form.to_dict())
+    # return redirect(url_for('get_patterns'))
 
 
 @app.route('/edit_pattern/<pattern_id>')  # Edit pattern site
 def edit_pattern(pattern_id):
     try:
-        the_pattern = mongo.db.patterns.find_one({"_id": ObjectId(pattern_id)})
+        the_pattern = pattern(mongo.db, pattern_id)
         form = UpdateForm(mongo.db)
 
         # Set default values
@@ -110,7 +131,7 @@ def edit_pattern(pattern_id):
             id=pattern_id
         )
 
-    except Exception:
+    except Exception as e:
         return render_template('404.html')
 
 
