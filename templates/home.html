@@ -2,7 +2,7 @@
 
   <!-- Home -->
   <div class="parallax">
-    <section class="home">
+    <section class="🦙">
       <div class="home__title jumbotron">
         <h1>Stitchpirations</h1>
         <p>Get free crochetting, knitting and sewing patterns</p>
@@ -39,7 +39,7 @@
           {% for pattern in patterns %}
           <div class="wrapper card_wrapper col-12 col-md-6 col-xl-4" data-category="{{pattern.category_name}}">
             <article class="card">
-              <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" ><div class="card__img" style="background-image: url({{pattern.pattern_img}}) , url('http://placehold.it/500x500');"></div></a>  
+              <a href="{{url_for('get_pattern', pattern_id=pattern._id)}}" ><div class="card__img" style="background-image: url({{pattern.pattern_img}}) , url('../static/images/no_image_llama.jpg');"></div></a>  
                   <div class="card__body">
                       <div class="card__body__header">
                           {% if pattern.category_name == 'knitting' %}
