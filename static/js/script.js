@@ -75,7 +75,7 @@ function showField(id) {
   field.attr("required", true);
 }
 
-// Hides required fields used in Add-EditPattern page
+// Hides not required fields used in Add-EditPattern page
 
 function hiddeField(id) {
   const fieldWrapper = $("#" + id);
