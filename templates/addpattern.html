@@ -4,10 +4,18 @@
 <div class="add-edit-pattern background-image">
   <div class="transparent-overlay">
     <div class="add-edit-pattern__form">
+      {% if hasError==True %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Input is not valid, try again.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %}
       {% if isNew==True %}
-        <h3 class="section__title">Add a Project/Article</h3>
+        <h3 class="section__title">Add a Pattern/Article</h3>
       {% else %}
-        <h3 class="section__title">Edit a Project/Article</h3>
+        <h3 class="section__title">Edit a Pattern/Article</h3>
       {% endif %}
 
       <div class="container">
@@ -16,6 +24,7 @@
         {% else %}
           <form action="{{url_for('update_pattern', pattern_id=id)}}" class="row" method="POST">
         {% endif %}
+        {{form.hidden_tag()}}
             <!-- Category name -->
             <div class="form-group col-md-6">
                 <p>
@@ -125,7 +134,7 @@
             <div class="buttons">
             {% if isNew==True %}
               <!-- Submit button -->
-              <button type="submit" class="btn btn-danger">Add Project</button>
+              <button type="submit" class="btn btn-danger">Add Pattern</button>
             {% else %}
               <!-- Update, Cancel and Delete buttons -->
               <button type="submit" class="btn btn-danger">Update</button>

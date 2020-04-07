@@ -66,11 +66,13 @@ def get_pattern(pattern_id):
 @app.route('/add_pattern')  # Add pattern site
 def add_pattern():
     form = UpdateForm(mongo.db)
+    hasError = request.args.get('showError', default=False, type=bool)
 
     return render_template(
         'addpattern.html',
         form=form,
-        isNew=True
+        isNew=True,
+        hasError=hasError
     )
 
 
@@ -82,24 +84,13 @@ def insert_pattern():
     form = UpdateForm(mongo.db, data=request.form.to_dict())
     is_valid: bool = form.validate()
 
-    # if is_valid:
-    #     return redirect(url_for('get_home'))
-    # else:
-    #     patterns = mongo.db.patterns
-    #     patterns.insert_one(request.form.to_dict())
-    #     return redirect(url_for('about'))
-    
-
     if is_valid:
         patterns = mongo.db.patterns
         patterns.insert_one(request.form.to_dict())
         return redirect(url_for('get_patterns'))
     else:
-        return redirect(url_for('add_pattern'))
+        return redirect(url_for('add_pattern', showError=True))
 
-    # patterns = mongo.db.patterns
-    # patterns.insert_one(request.form.to_dict())
-    # return redirect(url_for('get_patterns'))
 
 
 @app.route('/edit_pattern/<pattern_id>')  # Edit pattern site
@@ -131,7 +122,7 @@ def edit_pattern(pattern_id):
             id=pattern_id
         )
 
-    except Exception as e:
+    except Exception:
         return render_template('404.html')
 
 
