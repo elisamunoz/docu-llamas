@@ -22,7 +22,7 @@ I used Moqups to do the previous design of this project. [Here](https://github.c
 For this section I wanted to create a simple landing page, with a picture and a fixed navbar with links to the diferent sections.
 
 #### About:
-This sections contains a brief description for whom is the website and what the user can find on it.
+This sections contains a brief description for whom the website is and what the user can find on it.
 
 #### Patterns:
 In here you can find cards with differents patterns and articles available in the database, they have only little information such as, name of the pattern, the creator of the pattern or article, difficulty and an icon showing the category.
@@ -53,6 +53,7 @@ This page is to tell the user that the link she or he wants to visit is not avai
 * Bootstrap (4.3.1)
 * Font Awesome (5.11.2)
 * Google Fonts
+* WTForms 
 
 ## Features
 * Connect to MongoDB 
@@ -64,12 +65,13 @@ This page is to tell the user that the link she or he wants to visit is not avai
 * Parallax effect
 
 ## Testing
-* [W3C HTML Validator](https://validator.w3.org/) to validate HTML but it does not recognize Junja templating language.
+* [W3C HTML Validator](https://validator.w3.org/) to validate HTML but it does not recognize Jinja templating language.
 * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+* I tested it using Chrome developer tools and different devices. The site does not work properly in Internet Explorer but has all the functionalities working.
 
 ## Deployment
 ### Local Deployment:
-To run the project locally, you need an Integrated development environment and have installed:
+To run the project locally, you need an IDE and have installed:
 * PIP
 * Git
 * Python
@@ -83,9 +85,38 @@ After installing these you need to:
 4. Install the required modules using this command:
 `pip -r requirements.txt`
 5. Create a new MongoDB database and name it ‘stitching’, then create these three collections:
-* patterns	
-* pattern_category			
-* categories
+
+Categories
+```
+category_name: "crochet"
+category_name: "knitting"
+category_name: "sewing"
+category_name: "article"	
+```
+
+Difficulty
+```
+pattern_difficulty: "begginner"
+pattern_difficulty: "intermediate"
+pattern_difficulty: "advanced"
+```
+
+Patterns
+```
+category_name: <string>
+pattern_name: <string>
+pattern_by: <string>
+pattern_yarn_weight: <string>
+pattern_gauge: <string>
+pattern_needle_size: <string>
+pattern_yardage: <string>
+pattern_size: <string>
+pattern_difficulty: <string>
+pattern_language: <string>
+pattern_url: <string>
+pattern_img: <string>
+pattern_notes: <string>
+```
 
 You can run the app by running: `python app.py`
 The project will run at `http://127.0.0.1:5000`
