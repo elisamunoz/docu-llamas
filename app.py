@@ -96,8 +96,7 @@ def insert_pattern():
     """
     Add a pattern to Mongo DB and displays it in the patterns section if sucessful
     """
-    UpdateForm(mongo.db)
-    UpdateForm(mongo.db, data=request.form.to_dict())
+
 
     form = UpdateForm(mongo.db, data=request.form.to_dict())
     is_valid: bool = form.validate()
