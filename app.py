@@ -1,14 +1,12 @@
+import math
+from forms import UpdateForm
+from utils import find_categories, find_patterns, get_pattern, get_pattern_count
 import os
 from flask import Flask, render_template, redirect, url_for, request
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 if os.path.exists("env.py"):
     import env
-import math
-from forms import UpdateForm
-from utils import coll_categories, coll_patterns, pattern, pattern_count
-
-
 
 app = Flask(__name__)
 
@@ -18,18 +16,23 @@ app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+
 @app.route('/')
-@app.route('/home')  # gets patterns from MongoDB
+@app.route('/home')
 def get_home():
+    """ 
+    Homepage displays a set of Patterns and redirects to the main page
+    """
+
     page = request.args.get('page', default=1, type=int)
     patterns_per_page = 6
     skip = (page - 1) * patterns_per_page
 
-    all_categories = coll_categories(mongo.db)
-    total_patterns = pattern_count(mongo.db)
+    all_categories = find_categories(mongo.db)
+    total_patterns = get_pattern_count(mongo.db)
     total_pages = int(math.ceil(total_patterns / patterns_per_page))
 
-    patterns = coll_patterns(mongo.db).sort(
+    patterns = find_patterns(mongo.db).sort(
         "_id", -1).skip(skip).limit(patterns_per_page)
     return render_template(
         "home.html",
@@ -40,31 +43,43 @@ def get_home():
     )
 
 
-@app.route('/about')  # get to about section
+@app.route('/about')
 def about():
+    """
+    About displays About section
+    """
     page = request.args.get('about')
     return redirect(url_for('get_home', _anchor='about', page=page))
 
 
-@app.route('/get_patterns')  # get_patterns from MongoDB
+@app.route('/get_patterns')
 def get_patterns():
+    """
+    get_patterns get patterns on Mongo DB and displays a set of Patterns
+    """
     page = request.args.get('page')
     return redirect(url_for('get_home', _anchor='projects', page=page))
 
 
-@app.route('/get_pattern/<pattern_id>')  # gets to one pattern in particular
-def get_pattern(pattern_id):
+@app.route('/pattern/<pattern_id>')
+def pattern(pattern_id):
+    """
+    Gets to a pattern in particular
+    """
     try:
-        the_pattern = pattern(mongo.db, pattern_id)
-        all_categories = coll_categories(mongo.db)
-        return render_template('getpattern.html', pattern=the_pattern, categories=all_categories)
+        the_pattern = get_pattern(mongo.db, pattern_id)
+        all_categories = find_categories(mongo.db)
+        return render_template('pattern.html', pattern=the_pattern, categories=all_categories)
 
     except Exception:
         return render_template('404.html')
 
 
-@app.route('/add_pattern')  # Add pattern site
+@app.route('/add_pattern')
 def add_pattern():
+    """
+    Form to add a new pattern 
+    """
     form = UpdateForm(mongo.db)
     hasError = request.args.get('showError', default=False, type=bool)
 
@@ -76,8 +91,11 @@ def add_pattern():
     )
 
 
-@app.route('/insert_pattern', methods=['POST'])  # Insert pattern to MongoDB
+@app.route('/insert_pattern', methods=['POST'])
 def insert_pattern():
+    """
+    Add a pattern to Mongo DB and displays it in the patterns section if sucessful
+    """
     UpdateForm(mongo.db)
     UpdateForm(mongo.db, data=request.form.to_dict())
 
@@ -92,11 +110,13 @@ def insert_pattern():
         return redirect(url_for('add_pattern', showError=True))
 
 
-
-@app.route('/edit_pattern/<pattern_id>')  # Edit pattern site
+@app.route('/edit_pattern/<pattern_id>')
 def edit_pattern(pattern_id):
+    """
+    Form to edit a pattern in particular
+    """
     try:
-        the_pattern = pattern(mongo.db, pattern_id)
+        the_pattern = get_pattern(mongo.db, pattern_id)
         form = UpdateForm(mongo.db)
 
         # Set default values
@@ -126,9 +146,11 @@ def edit_pattern(pattern_id):
         return render_template('404.html')
 
 
-# Update pattern in MongoDB
 @app.route('/update_pattern/<pattern_id>', methods=["POST"])
 def update_pattern(pattern_id):
+    """
+   Updates a pattern on Mongo DB 
+    """
     try:
         patterns = mongo.db.patterns
         patterns.update({'_id': ObjectId(pattern_id)},
@@ -147,13 +169,16 @@ def update_pattern(pattern_id):
             'pattern_img': request.form.get('pattern_img'),
             'pattern_difficulty': request.form.get('pattern_difficulty')
         })
-        return get_pattern(pattern_id)
+        return pattern(pattern_id)
     except Exception:
         return render_template('404.html')
 
 
-@app.route('/delete_pattern/<pattern_id>')  # Delete pattern in Mongo DB
+@app.route('/delete_pattern/<pattern_id>')
 def delete_pattern(pattern_id):
+    """
+    Deletes a pattern in particular from Mongo DB
+    """
     try:
         mongo.db.patterns.remove({'_id': ObjectId(pattern_id)})
         return redirect(url_for('get_patterns'))

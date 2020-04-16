@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired
-from utils import coll_categories, coll_patterns, coll_difficulty
+from utils import find_categories, find_difficulty
 
 
 class UpdateForm(FlaskForm):
@@ -23,8 +23,8 @@ class UpdateForm(FlaskForm):
     def __init__(self, db, *args, **kwargs):
         super(UpdateForm, self).__init__(*args, **kwargs)
 
-        all_categories = coll_categories(db)
-        all_difficulty = coll_difficulty(db)
+        all_categories = find_categories(db)
+        all_difficulty = find_difficulty(db)
 
         self.category_name.choices = [("", " ")] + [(cat['category_name'], cat['category_name']) for cat in all_categories]
         self.pattern_difficulty.choices = [("", " ")] + [(diff['pattern_difficulty'], diff['pattern_difficulty']) for diff
