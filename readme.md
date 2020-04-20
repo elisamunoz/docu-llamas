@@ -119,7 +119,7 @@ pattern_notes: <string>
 ```
 
 You can run the app by running: `python app.py`
-The project will run at `http://127.0.0.1:5000`
+The project will run at `http://127.0.0.1:8080`
 
 ### Remote Deployment
 The application can be deploying using Heroku. Before, you need to:
