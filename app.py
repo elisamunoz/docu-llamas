@@ -97,7 +97,6 @@ def insert_pattern():
     Add a pattern to Mongo DB and displays it in the patterns section if sucessful
     """
 
-
     form = UpdateForm(mongo.db, data=request.form.to_dict())
     is_valid: bool = form.validate()
 
@@ -151,24 +150,29 @@ def update_pattern(pattern_id):
    Updates a pattern on Mongo DB 
     """
     try:
-        patterns = mongo.db.patterns
-        patterns.update({'_id': ObjectId(pattern_id)},
-                        {
-            'category_name': request.form.get('category_name'),
-            'pattern_name': request.form.get('pattern_name'),
-            'pattern_by': request.form.get('pattern_by'),
-            'pattern_yarn_weight': request.form.get('pattern_yarn_weight'),
-            'pattern_gauge': request.form.get('pattern_gauge'),
-            'pattern_needle_size': request.form.get('pattern_needle_size'),
-            'pattern_yardage': request.form.get('pattern_yardage'),
-            'pattern_size': request.form.get('pattern_size'),
-            'pattern_language': request.form.get('pattern_language'),
-            'pattern_url': request.form.get('pattern_url'),
-            'pattern_notes': request.form.get('pattern_notes'),
-            'pattern_img': request.form.get('pattern_img'),
-            'pattern_difficulty': request.form.get('pattern_difficulty')
-        })
-        return pattern(pattern_id)
+        form = UpdateForm(mongo.db, data=request.form.to_dict())
+        is_valid: bool = form.validate()
+
+        if is_valid:
+            patterns = mongo.db.patterns
+            patterns.update({'_id': ObjectId(pattern_id)},
+                            {
+                'category_name': request.form.get('category_name'),
+                'pattern_name': request.form.get('pattern_name'),
+                'pattern_by': request.form.get('pattern_by'),
+                'pattern_yarn_weight': request.form.get('pattern_yarn_weight'),
+                'pattern_gauge': request.form.get('pattern_gauge'),
+                'pattern_needle_size': request.form.get('pattern_needle_size'),
+                'pattern_yardage': request.form.get('pattern_yardage'),
+                'pattern_size': request.form.get('pattern_size'),
+                'pattern_language': request.form.get('pattern_language'),
+                'pattern_url': request.form.get('pattern_url'),
+                'pattern_notes': request.form.get('pattern_notes'),
+                'pattern_img': request.form.get('pattern_img'),
+                'pattern_difficulty': request.form.get('pattern_difficulty')
+            })
+            return pattern(pattern_id)
+        return redirect(url_for('add_pattern', showError=True))
     except Exception:
         return render_template('404.html')
 

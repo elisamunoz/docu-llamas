@@ -5,9 +5,11 @@ from utils import find_categories, find_difficulty
 
 
 class UpdateForm(FlaskForm):
-    category_name = SelectField('Category', validators=[DataRequired()], choices=[])
+    category_name = SelectField('Category', validators=[
+                                DataRequired()], choices=[])
     pattern_language = StringField('Language', validators=[DataRequired()])
-    pattern_name = StringField('Pattern/Article Name', validators=[DataRequired()])
+    pattern_name = StringField(
+        'Pattern/Article Name', validators=[DataRequired()])
     pattern_by = StringField('Pattern/Article by', validators=[DataRequired()])
     pattern_needle_size = StringField('Hook/Needle Size')
     pattern_gauge = StringField('Gauge')
@@ -15,8 +17,10 @@ class UpdateForm(FlaskForm):
     pattern_yardage = StringField('How much do you need?')
     pattern_size = StringField('Available size')
     pattern_difficulty = SelectField('Skill level', default="")
-    pattern_url = StringField('Pattern/Article url', validators=[DataRequired()])
-    pattern_img = StringField('Pattern/Article image (url)', validators=[DataRequired()])
+    pattern_url = StringField('Pattern/Article url',
+                              validators=[DataRequired()])
+    pattern_img = StringField(
+        'Pattern/Article image (url)', validators=[DataRequired()])
     pattern_notes = TextAreaField('Note', validators=[DataRequired()])
     submit = SubmitField('Add Pattern')
 
@@ -26,6 +30,7 @@ class UpdateForm(FlaskForm):
         all_categories = find_categories(db)
         all_difficulty = find_difficulty(db)
 
-        self.category_name.choices = [("", " ")] + [(cat['category_name'], cat['category_name']) for cat in all_categories]
+        self.category_name.choices = [
+            ("", " ")] + [(cat['category_name'], cat['category_name']) for cat in all_categories]
         self.pattern_difficulty.choices = [("", " ")] + [(diff['pattern_difficulty'], diff['pattern_difficulty']) for diff
                                                          in all_difficulty]

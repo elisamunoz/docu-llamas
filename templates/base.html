@@ -4,30 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Stitchpirations is a place for knitters, crocheters and sewers to keep update to new patterns, and look to others for ideas and inspiration." />
-    <meta name="author" content="Elisa Munoz">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/penguin-favicon.png') }}" />
+    <meta
+      name="description"
+      content="Stitchpirations is a place for knitters, crocheters and sewers to keep update to new patterns, and look to others for ideas and inspiration."
+    />
+    <meta name="author" content="Elisa Munoz" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/icons/penguin-favicon.png') }}"
+    />
     <title>Stitchpirations</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Sacramento&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tablet.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/desktop.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/tablet.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/desktop.css') }}"
+    />
   </head>
   <body>
     <!-- Header -->
     <nav class="navbar navbar-color navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="{{url_for('get_home')}}">Stitchpirations</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" href="{{url_for('get_home')}}">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="{{url_for('get_home')}}"
+            >Home <span class="sr-only">(current)</span></a
+          >
           <a class="nav-item nav-link" href="{{url_for('about')}}">About</a>
-          <a class="nav-item nav-link" href="{{url_for('get_patterns')}}">Projects</a>
-          <a class="nav-item nav-link" href="{{url_for('add_pattern')}}">Add a Project</a>
+          <a class="nav-item nav-link" href="{{url_for('get_patterns')}}"
+            >Projects</a
+          >
+          <a class="nav-item nav-link" href="{{url_for('add_pattern')}}"
+            >Add a Project</a
+          >
         </div>
       </div>
     </nav>
@@ -36,43 +72,39 @@
 
     <!-- Site content -->
     <div class="site-content" id="{% block pageId %}{% endblock pageId %}">
-      {% block content %}
-      {% endblock content %}
+      {% block content %} {% endblock content %}
     </div>
     <!-- /Site content -->
 
+    <!-- Footer-->
+    <footer>
+      <div class="container">
+        <ul class="list-inline social-links text-center col-sm-3">
+          <li class="list-inline-item">
+            <a target="_blank" href="https://github.com/elisamunoz">
+              <i class="fab fa-github fa-footer" aria-hidden="true"></i>
+              <span class="sr-only">GitHub</span>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a target="_blank" href="#">
+              <i class="fab fa-linkedin fa-footer" aria-hidden="true"></i>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <!--/Footer-->
 
-    
-     <!-- Footer-->
-     <footer>
-        <div class="container">
-          <ul class="list-inline social-links text-center col-sm-3">
-            <li class="list-inline-item">
-              <a target="_blank" href="https://github.com/elisamunoz">
-                <i class="fab fa-github fa-footer" aria-hidden="true"></i>
-                <span class="sr-only">GitHub</span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a target="_blank" href="#">
-                <i class="fab fa-linkedin fa-footer" aria-hidden="true"></i>
-                <span class="sr-only">LinkedIn</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
-      <!--/Footer-->
-  
-      <!--Scripts-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script
-        src="https://kit.fontawesome.com/68fe0b31dc.js"
-        crossorigin="anonymous"
-      ></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-      <!--/Scripts-->
-    </body>
-  </html>
-  
+    <!--Scripts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/68fe0b31dc.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!--/Scripts-->
+  </body>
+</html>

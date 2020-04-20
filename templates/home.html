@@ -1,91 +1,158 @@
 {% extends 'base.html' %} {% block content %}
 
-  <!-- Home -->
-  <div class="parallax">
-    <section class="🦙">
-      <div class="home__title jumbotron">
-        <h1>Stitchpirations</h1>
-        <p>Get free crochetting, knitting and sewing patterns</p>
-      </div>
-    </section>
-  </div>
-  <!-- /Home -->
-
-  <!-- About -->
-  <section id="about" class="about">
-    <div class="about-container">
-      <h1 class="section__title">About</h1>
-      <div class="row about-row">
-        <div class="about__img">
-          <img class="about__img__img" src="/static/images/about_img.jpg" alt="A knitted jumper with the text 'Knit please!' on it">
-        </div>
-        <div class="about__txt">
-          <h3>Make yourself happy!</h3>
-          <p>Knitting, crochetting and sewing make us feel good. It helps us focus, feel creative and put the stresses of the day to rest. Now we want to share this 'secret' - it's the perfect time to get involved.<br class="about__txt__br">
-          Stitchpirations is a place for knitters, crocheters and sewers to keep update to new patterns, and look to others for ideas and inspiration. The content here is all user- driven. This is a great place for you to keep notes about your projects, see what other people are making and find the perfect pattern.</p>
-        </div>
-      </div>
+<!-- Home -->
+<div class="parallax">
+  <section class="🦙">
+    <div class="home__title jumbotron">
+      <h1>Stitchpirations</h1>
+      <p>Get free crochetting, knitting and sewing patterns</p>
     </div>
   </section>
-  <!-- About -->
-  
-  <!-- Patterns -->
-  <section id="projects" class="projects">
-      <div class="container">
-        <h1 class="section__title">Patterns</h1>
-                    
-          <!-- card -->
-        <div id="cards" class="row">
-          {% for pattern in patterns %}
-          <div class="wrapper card_wrapper col-12 col-md-6 col-xl-4" data-category="{{pattern.category_name}}">
-            <article class="card">
-              <a href="{{url_for('pattern', pattern_id=pattern._id)}}" ><div class="card__img" style="background-image: url({{pattern.pattern_img}}) , url('../static/images/no_image_llama.jpg');"></div></a>  
-                  <div class="card__body">
-                      <div class="card__body__header">
-                          {% if pattern.category_name == 'knitting' %}
-                              <div class= "card__body__header__category-icon" style="background-image: url('../static/images/icons/needles.png')"></div>
-                          {% elif pattern.category_name == 'crochet' %}
-                              <div class= "card__body__header__category-icon" style="background-image: url('../static/images/icons/crochet.png')"></div>
-                          {% elif pattern.category_name == 'sewing' %}
-                              <div class= "card__body__header__category-icon" style="background-image: url('../static/images/icons/sewing_machine.png')"></div>
-                          {%else%}
-                              <div class= "card__body__header__category-icon" style="background-image: url('../static/images/icons/article.png')"></div>
-                          {% endif %}
-                          <div class="card__body__header__text">
-                              <h4 class="card__body__header__title">{{pattern.pattern_name}}</h4>
-                              <h6> by {{pattern.pattern_by}} </h6>
-                          </div>
-                      </div>
-                      <div class="card__body__txt">
-                        {% if (pattern.category_name == 'knitting' or pattern.category_name == 'crochet' or pattern.category_name == 'sewing') %}
-                          <p>Difficulty: {% include 'difficulty.html' %}</p>
-                        {% endif %}
-                      </div>
-                  </div>
-            </article>
-          </div>
-          {% endfor %}
-        </div>
-        <!-- Pagination -->
-        <div class="row">
-          <nav class="nav-center" aria-label="...">
-            <ul class="pagination">
-              {% if current_page != 1%}
-                <li class="page-item"><a class="page-link" href="{{url_for('get_patterns', page=(current_page - 1))}}">Previous</a></li>
-              {% endif %}
-              {% for page in range(total_pages) %}
-                {% if (page + 1) == current_page %}
-                <li class="page-item active"><a class="page-link" href="{{url_for('get_patterns', page=(page + 1))}}">{{page + 1}}<span class="sr-only">(current)</span></a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="{{url_for('get_patterns', page=(page + 1))}}">{{page + 1}}</a></li>   
-                {% endif %}
-              {% endfor %}
-              {% if current_page != total_pages %}
-                <li class="page-item"><a class="page-link" href="{{url_for('get_patterns', page=(current_page + 1))}}">Next</a></li>
-              {% endif %}
-            </ul>
-          </nav>
-        </div>
+</div>
+<!-- /Home -->
+
+<!-- About -->
+<section id="about" class="about">
+  <div class="about-container">
+    <h1 class="section__title">About</h1>
+    <div class="row about-row">
+      <div class="about__img">
+        <img
+          class="about__img__img"
+          src="/static/images/about_img.jpg"
+          alt="A knitted jumper with the text 'Knit please!' on it"
+        />
       </div>
-  </section>
+      <div class="about__txt">
+        <h3>Make yourself happy!</h3>
+        <p>
+          Knitting, crochetting and sewing make us feel good. It helps us focus,
+          feel creative and put the stresses of the day to rest. Now we want to
+          share this 'secret' - it's the perfect time to get involved.<br
+            class="about__txt__br"
+          />
+          Stitchpirations is a place for knitters, crocheters and sewers to keep
+          update to new patterns, and look to others for ideas and inspiration.
+          The content here is all user- driven. This is a great place for you to
+          keep notes about your projects, see what other people are making and
+          find the perfect pattern.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About -->
+
+<!-- Patterns -->
+<section id="projects" class="projects">
+  <div class="container">
+    <h1 class="section__title">Patterns</h1>
+
+    <!-- card -->
+    <div id="cards" class="row">
+      {% for pattern in patterns %}
+      <div
+        class="wrapper card_wrapper col-12 col-md-6 col-xl-4"
+        data-category="{{pattern.category_name}}"
+      >
+        <article class="card">
+          <a href="{{url_for('pattern', pattern_id=pattern._id)}}"
+            ><div
+              class="card__img"
+              style="background-image: url({{pattern.pattern_img}}) , url('../static/images/no_image_llama.jpg');"
+            ></div
+          ></a>
+          <div class="card__body">
+            <div class="card__body__header">
+              {% if pattern.category_name == 'knitting' %}
+              <div
+                class="card__body__header__category-icon"
+                style="
+                  background-image: url('../static/images/icons/needles.png');
+                "
+              ></div>
+              {% elif pattern.category_name == 'crochet' %}
+              <div
+                class="card__body__header__category-icon"
+                style="
+                  background-image: url('../static/images/icons/crochet.png');
+                "
+              ></div>
+              {% elif pattern.category_name == 'sewing' %}
+              <div
+                class="card__body__header__category-icon"
+                style="
+                  background-image: url('../static/images/icons/sewing_machine.png');
+                "
+              ></div>
+              {%else%}
+              <div
+                class="card__body__header__category-icon"
+                style="
+                  background-image: url('../static/images/icons/article.png');
+                "
+              ></div>
+              {% endif %}
+              <div class="card__body__header__text">
+                <h4 class="card__body__header__title">
+                  {{pattern.pattern_name}}
+                </h4>
+                <h6>by {{pattern.pattern_by}}</h6>
+              </div>
+            </div>
+            <div class="card__body__txt">
+              {% if (pattern.category_name == 'knitting' or
+              pattern.category_name == 'crochet' or pattern.category_name ==
+              'sewing') %}
+              <p>Difficulty: {% include 'difficulty.html' %}</p>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Pagination -->
+    <div class="row">
+      <nav class="nav-center" aria-label="...">
+        <ul class="pagination">
+          {% if current_page != 1%}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="{{url_for('get_patterns', page=(current_page - 1))}}"
+              >Previous</a
+            >
+          </li>
+          {% endif %} {% for page in range(total_pages) %} {% if (page + 1) ==
+          current_page %}
+          <li class="page-item active">
+            <a
+              class="page-link"
+              href="{{url_for('get_patterns', page=(page + 1))}}"
+              >{{page + 1}}<span class="sr-only">(current)</span></a
+            >
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="{{url_for('get_patterns', page=(page + 1))}}"
+              >{{page + 1}}</a
+            >
+          </li>
+          {% endif %} {% endfor %} {% if current_page != total_pages %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="{{url_for('get_patterns', page=(current_page + 1))}}"
+              >Next</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
 {% endblock %}
