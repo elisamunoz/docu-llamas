@@ -191,7 +191,7 @@ a:hover {
   margin: 10px auto;
   max-width: 600px;
   border: none;
-  background-color: var(color-main-super-light);
+  background-color: var(--color-main-super-light);
 }
 
 .card__img {
