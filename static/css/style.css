@@ -5,6 +5,7 @@
   --color-text: #352523;
   --color-light-gray: #f7f7f7;
   --color-form-border: rgba(255, 220, 221, 0.56);
+  --color-transparent: #fffbfb;
 }
 
 /** General paddings, margins, styles **/
@@ -191,7 +192,7 @@ a:hover {
   margin: 10px auto;
   max-width: 600px;
   border: none;
-  background-color: var(--color-main-super-light);
+  background-color: var(--color-transparent);
 }
 
 .card__img {
